@@ -2,14 +2,19 @@ import { useState, useContext } from "react";
 import AuthContext from "../context/AuthContext";
 
 function Register() {
-  const [username, setUsername] = useState("");
+  const [first_name, setUsername] = useState("");
+  const [last_name, setLastname] = useState("");
+
+  const [email, setEmail] = useState("");
+  const [role, setRole] = useState("");
+
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
   const { registerUser } = useContext(AuthContext);
 
   const handleSubmit = async e => {
     e.preventDefault();
-    registerUser(username, password, password2);
+    registerUser(first_name, last_name, email, role, password, password2);
   };
 
   return (
@@ -18,12 +23,42 @@ function Register() {
         <h1>Register</h1>
         <hr />
         <div>
-          <label htmlFor="username">Username</label>
+          <label htmlFor="first_name">first name</label>
           <input
             type="text"
-            id="username"
+            id="first_name"
             onChange={e => setUsername(e.target.value)}
-            placeholder="Username"
+            placeholder="first_name"
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="username">last name</label>
+          <input
+            type="text"
+            id="last_name"
+            onChange={e => setLastname(e.target.value)}
+            placeholder="last_name"
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="username">email</label>
+          <input
+            type="text"
+            id="email"
+            onChange={e => setEmail(e.target.value)}
+            placeholder="email"
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="username">role</label>
+          <input
+            type="text"
+            id="role"
+            onChange={e => setRole(e.target.value)}
+            placeholder="role"
             required
           />
         </div>

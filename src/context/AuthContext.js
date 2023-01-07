@@ -7,28 +7,35 @@ const AuthContext = createContext();
 export default AuthContext;
 
 export const AuthProvider = ({ children }) => {
-  const [authTokens, setAuthTokens] = useState(() =>
-    localStorage.getItem("authTokens")
-      ? JSON.parse(localStorage.getItem("authTokens"))
-      : null
+  localStorage.clear()
+  const [authTokens, setAuthTokens] = useState(() => {
+    const storedToken = localStorage.getItem("token");
+    if (storedToken) 
+      return  JSON.parse(localStorage.getItem("authTokens"))
+    else
+      return  null
+   }
   );
-  const [user, setUser] = useState(() =>
-    localStorage.getItem("authTokens")
-      ? jwt_decode(localStorage.getItem("authTokens"))
-      : null
-  );
+  const [user, setUser] = useState(() => {
+      const storedToken = localStorage.getItem("token");
+      if (storedToken) 
+        return  JSON.parse(localStorage.getItem("authTokens"))
+      else
+        return  null
+      }
+    );
   const [loading, setLoading] = useState(true);
 
-  const history = useHistory();
+  const history = useHistory({});
 
-  const loginUser = async (username, password) => {
+  const loginUser = async (email, password) => {
     const response = await fetch("http://127.0.0.1:8000/api/user/login/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        username,
+        email,
         password
       })
     });
@@ -36,33 +43,39 @@ export const AuthProvider = ({ children }) => {
 
     if (response.status === 200) {
       setAuthTokens(data);
-      setUser(jwt_decode(data.access));
+      //const decode = jwt_decode(data)
+      setUser(data);
+    
       localStorage.setItem("authTokens", JSON.stringify(data));
-      history.push("/");
+      history.go("/");
     } else {
       alert("Something went wrong!");
     }
   };
 
-  const registerUser = async (username, password, password2) => {
+  const registerUser = async (first_name, last_name, email, role, password, confirm_password) => {
     const response = await fetch("http://127.0.0.1:8000/api/user/signup/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        username,
+        first_name,
+        last_name,
+        email,
+        role,
         password,
-        password2
+        confirm_password
       })
     });
-    response.header("Access-Control-Allow-Origin", "*");
-    response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    alert("Something went good!", response.status );
+    //response.header("Access-Control-Allow-Origin", "*");
+    //response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+
     if (response.status === 200) {
       history.push("/login");
+
     } else {
-      alert("Something went wrong!");
+      alert("Erreur d'enregistrement");
     }
   };
 

@@ -8,8 +8,7 @@ import { AuthProvider } from "./context/AuthContext";
 import Home from "./views/homePage";
 import Login from "./views/loginPage";
 import Register from "./views/registerPage";
-//import ProtectedPage from "./views/ProtectedPage";
-//<!-- <PrivateRoute component={ProtectedPage} path="/protected" exact /> -->
+import ProtectedPage from "./views/ProtectedPage";
 
 function App() {
   return (
@@ -18,6 +17,7 @@ function App() {
         <AuthProvider>
           <Navbar />
           <Switch>
+           <PrivateRoute component={ProtectedPage} path="/protected" exact />
             <Route component={Login} path="/login" />
             <Route component={Register} path="/register" />
             <Route component={Home} path="/" />
