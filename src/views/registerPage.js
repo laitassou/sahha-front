@@ -1,6 +1,15 @@
 import { useState, useContext } from "react";
 import AuthContext from "../context/AuthContext";
 
+import Select from 'react-select';
+
+const options = [
+  {value: "Worker", label:"Aide à domicile"},
+  {value: "Client", label:"Client"},
+  {value: "Manager", label:"Gestionnaire"},
+  {value: "Supervisor", label:"Superviseur"},    
+]
+
 function Register() {
   const [first_name, setUsername] = useState("");
   const [last_name, setLastname] = useState("");
@@ -17,6 +26,13 @@ function Register() {
     registerUser(first_name, last_name, email, role, password, password2);
   };
 
+  
+  const handleChange = (selectedOption) => {
+    console.log("event ", selectedOption)
+    setRole(selectedOption.value);
+  };
+
+  
   return (
     <section>
       <form onSubmit={handleSubmit}>
@@ -53,14 +69,14 @@ function Register() {
           />
         </div>
         <div>
-          <label htmlFor="username">role</label>
-          <input
-            type="text"
-            id="role"
-            onChange={e => setRole(e.target.value)}
+        <div>
+          <Select
+            onChange={handleChange}
+            options={options}
             placeholder="role"
-            required
+            defaultValue="Client"
           />
+        </div>
         </div>
         <div>
           <label htmlFor="password">Password</label>

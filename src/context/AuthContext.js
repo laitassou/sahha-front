@@ -7,9 +7,9 @@ const AuthContext = createContext();
 export default AuthContext;
 
 export const AuthProvider = ({ children }) => {
-  localStorage.clear()
+  //localStorage.clear()
   const [authTokens, setAuthTokens] = useState(() => {
-    const storedToken = localStorage.getItem("token");
+    const storedToken = localStorage.getItem("authTokens");
     if (storedToken) 
       return  JSON.parse(localStorage.getItem("authTokens"))
     else
@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }) => {
    }
   );
   const [user, setUser] = useState(() => {
-      const storedToken = localStorage.getItem("token");
+      const storedToken = localStorage.getItem("authTokens");
       if (storedToken) 
         return  JSON.parse(localStorage.getItem("authTokens"))
       else
@@ -42,12 +42,13 @@ export const AuthProvider = ({ children }) => {
     const data = await response.json();
 
     if (response.status === 200) {
-      setAuthTokens(data);
+      //localStorage.setItem('token', data);
+      //setAuthTokens(data);
       //const decode = jwt_decode(data)
       setUser(data);
     
       localStorage.setItem("authTokens", JSON.stringify(data));
-      history.go("/");
+      history.push("/");
     } else {
       alert("Something went wrong!");
     }
@@ -80,7 +81,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logoutUser = () => {
-    setAuthTokens(null);
+    //setAuthTokens(null);
     setUser(null);
     localStorage.removeItem("authTokens");
     history.push("/");
