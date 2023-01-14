@@ -7,15 +7,22 @@ const AuthContext = createContext();
 export default AuthContext;
 
 export const AuthProvider = ({ children }) => {
-  //localStorage.clear()
-  const [authTokens, setAuthTokens] = useState(() => {
-    const storedToken = localStorage.getItem("authTokens");
-    if (storedToken) 
-      return  JSON.parse(localStorage.getItem("authTokens"))
-    else
-      return  null
-   }
-  );
+
+    const [authTokens, setAuthTokens] = useState(() => {
+      try {
+        const storedToken = localStorage.getItem("authTokens");
+        if (storedToken) 
+          return  JSON.parse(localStorage.getItem("authTokens"))
+        else
+          return  null
+      } catch (e) {
+        localStorage.clear() //what you need to do incase the jwt is not valid
+        console.log(e) //for your own debugging
+      } 
+    } 
+    )
+
+
   const [user, setUser] = useState(() => {
       const storedToken = localStorage.getItem("authTokens");
       if (storedToken) 
@@ -24,6 +31,8 @@ export const AuthProvider = ({ children }) => {
         return  null
       }
     );
+
+    
   const [loading, setLoading] = useState(true);
 
   const history = useHistory({});
@@ -87,6 +96,31 @@ export const AuthProvider = ({ children }) => {
     history.push("/");
   };
 
+
+  const publishAnnonce = async (title, description) => {
+    const response = await fetch("http://127.0.0.1:8000/api/annonce/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        title,
+        description,
+      })
+    });
+    //response.header("Access-Control-Allow-Origin", "*");
+    //response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+
+    if (response.status === 200) {
+      history.push("/");
+
+    } else {
+      alert("Erreur de publication");
+    }
+  };
+
+
+
   const contextData = {
     user,
     setUser,
@@ -94,7 +128,8 @@ export const AuthProvider = ({ children }) => {
     setAuthTokens,
     registerUser,
     loginUser,
-    logoutUser
+    logoutUser,
+    publishAnnonce,
   };
 
   useEffect(() => {

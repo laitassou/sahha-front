@@ -10,6 +10,8 @@ import Login from "./views/loginPage";
 import Register from "./views/registerPage";
 import ProtectedPage from "./views/ProtectedPage";
 
+import Annonces from "./views/annonces";
+
 function App() {
   return (
     <Router>
@@ -20,6 +22,8 @@ function App() {
            <PrivateRoute component={ProtectedPage} path="/protected" exact />
             <Route component={Login} path="/login" />
             <Route component={Register} path="/register" />
+            <Route component={Annonces} path="/annonces" />
+
             <Route component={Home} path="/" />
           </Switch>
         </AuthProvider>
