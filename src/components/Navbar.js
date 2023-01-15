@@ -6,7 +6,6 @@ import AuthContext from "../context/AuthContext";
 
 const Navbar = () => {
   const { user, logoutUser } = useContext(AuthContext);
-
   function Client(props) {
     return          (   <>
       <Link to="/">Home</Link> <br/>

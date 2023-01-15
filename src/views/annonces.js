@@ -26,7 +26,6 @@ function Annonces(props) {
   const handleDesc = (event) => {
     setDescription(event.target.value);
 };
-
   if (user) {
     return (
       <section>

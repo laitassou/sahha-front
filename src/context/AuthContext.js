@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from "react";
-import jwt_decode from "jwt-decode";
 import { useHistory } from "react-router-dom";
+import jwt from "jwt-decode"
 
 const AuthContext = createContext();
 
@@ -9,18 +9,18 @@ export default AuthContext;
 export const AuthProvider = ({ children }) => {
 
     const [authTokens, setAuthTokens] = useState(() => {
-      try {
-        const storedToken = localStorage.getItem("authTokens");
-        if (storedToken) 
-          return  JSON.parse(localStorage.getItem("authTokens"))
-        else
-          return  null
-      } catch (e) {
-        localStorage.clear() //what you need to do incase the jwt is not valid
-        console.log(e) //for your own debugging
+        try {
+          const storedToken = localStorage.getItem("authTokens");
+          if (storedToken) 
+            return  JSON.parse(storedToken)
+          else
+            return  null
+        } catch (e) {
+          localStorage.clear() //what you need to do incase the jwt is not valid
+          console.log(e) //for your own debugging
+        } 
       } 
-    } 
-    )
+    );
 
 
   const [user, setUser] = useState(() => {
@@ -49,13 +49,10 @@ export const AuthProvider = ({ children }) => {
       })
     });
     const data = await response.json();
-
     if (response.status === 200) {
-      //localStorage.setItem('token', data);
       //setAuthTokens(data);
-      //const decode = jwt_decode(data)
+      //user = jwt(data.token)
       setUser(data);
-    
       localStorage.setItem("authTokens", JSON.stringify(data));
       history.push("/");
     } else {
@@ -98,10 +95,16 @@ export const AuthProvider = ({ children }) => {
 
 
   const publishAnnonce = async (title, description) => {
+    const auth = localStorage.getItem("authTokens");
+    console.log('auth_token:',auth, typeof(auth))
+    const auth_json = JSON.parse(auth)
+    const json_auth_token = auth_json.token
+    console.log('auth_token:',json_auth_token)
     const response = await fetch("http://127.0.0.1:8000/api/annonce/", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Authorization": "Token "+json_auth_token
       },
       body: JSON.stringify({
         title,
@@ -134,7 +137,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     if (authTokens) {
-      setUser(jwt_decode(authTokens.access));
+      setUser(jwt(authTokens.token));
     }
     setLoading(false);
   }, [authTokens, loading]);
