@@ -11,6 +11,7 @@ import Register from "./views/registerPage";
 import ProtectedPage from "./views/ProtectedPage";
 
 import Annonces from "./views/annonces";
+import ListAnnonces from "./views/listannonces";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route component={Login} path="/login" />
             <Route component={Register} path="/register" />
             <Route component={Annonces} path="/annonces" />
+            <Route component={ListAnnonces} path="/list-annonces" exact />
 
             <Route component={Home} path="/" />
           </Switch>

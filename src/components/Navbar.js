@@ -10,6 +10,8 @@ const Navbar = () => {
     return          (   <>
       <Link to="/">Home</Link> <br/>
       <Link to="/annonces">Page Annonces</Link>  <br/>
+      <Link to="/list-annonces">Page Annonces</Link>  <br/>
+
       <button onClick={logoutUser}>Logout</button>
     </>);
   }

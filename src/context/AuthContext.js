@@ -123,6 +123,27 @@ export const AuthProvider = ({ children }) => {
   };
 
 
+  const list_annonces = async () => {
+    const auth = localStorage.getItem("authTokens");
+    const auth_json = JSON.parse(auth)
+    const json_auth_token = auth_json.token
+    const response = await fetch("http://127.0.0.1:8000/api/annonce/", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Token "+json_auth_token
+      }});
+
+    const data = await response.json();
+    if (response.status === 200) {
+      return data;
+    } else {
+      alert("Erreur de listing");
+      return null;
+    }
+  };
+
+
 
   const contextData = {
     user,
@@ -133,6 +154,7 @@ export const AuthProvider = ({ children }) => {
     loginUser,
     logoutUser,
     publishAnnonce,
+    list_annonces,
   };
 
   useEffect(() => {
