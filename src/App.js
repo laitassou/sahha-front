@@ -8,8 +8,10 @@ import { AuthProvider } from "./context/AuthContext";
 import Home from "./views/homePage";
 import Login from "./views/loginPage";
 import Register from "./views/registerPage";
-//import ProtectedPage from "./views/ProtectedPage";
-//<!-- <PrivateRoute component={ProtectedPage} path="/protected" exact /> -->
+import ProtectedPage from "./views/ProtectedPage";
+
+import Annonces from "./views/annonces";
+import ListAnnonces from "./views/listannonces";
 
 function App() {
   return (
@@ -18,8 +20,12 @@ function App() {
         <AuthProvider>
           <Navbar />
           <Switch>
+           <PrivateRoute component={ProtectedPage} path="/protected" exact />
             <Route component={Login} path="/login" />
             <Route component={Register} path="/register" />
+            <Route component={Annonces} path="/annonces" />
+            <Route component={ListAnnonces} path="/list-annonces" exact />
+
             <Route component={Home} path="/" />
           </Switch>
         </AuthProvider>
