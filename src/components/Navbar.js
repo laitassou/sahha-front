@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
-// import AuthContext from "../context/AuthContext";
+import { NavLink, Link } from "react-router-dom";
+import AuthContext from "../context/AuthContext";
 import { useLocation } from "react-router-dom";
+import { useContext } from "react";
 
 const Navbar = () => {
-  // const { user, logoutUser } = useContext(AuthContext);
+   const { user, logoutUser } = useContext(AuthContext);
   // function Client(props) {
   //   return (
   //     <>
@@ -56,6 +57,7 @@ const Navbar = () => {
   //   }
   // }
 
+
   const location = useLocation();
 
   //destructuring pathname from location
@@ -70,6 +72,59 @@ const Navbar = () => {
     setIsActive((current) => !current);
   };
 
+
+  function connected(){
+    if (user) {
+      return (
+        <div>
+        <ul className="navbar-nav navbar_right">
+        <li className="nav-item">
+          <Link to="monespace">
+            <span className="desk_text_sign">Mon espace</span>
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link
+            to="/"
+            className="btn btn-primary started_btn"
+            type="button"
+            onClick={logoutUser}
+          >
+            Logout
+          </Link>
+        </li>
+        </ul>
+      </div>
+      );
+    }
+    else {
+      return (
+        <div>
+        <ul className="navbar-nav navbar_right">
+        <li className="nav-item">
+          <NavLink
+            className={splitLocation[1] === "nav-link" ? "active" : ""}
+            to="/login"
+          >
+            <span className="desk_text_sign">Sign in</span>
+            <img src="login.svg" alt="" className="mobile_icon"></img>
+          </NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink
+            to="/login"
+            className="btn btn-primary started_btn"
+            type="button"
+          >
+            Get Started
+          </NavLink>
+        </li>
+        </ul>
+      </div>
+      );
+    }
+  }
+  
   return (
     <nav className="navbar navbar-expand-sm">
       <div className="container">
@@ -84,58 +139,32 @@ const Navbar = () => {
               <li className="nav-item">
                 <NavLink
                   className={splitLocation[1] === "nav-link" ? "active" : ""}
-                  to="/announce"
+                  to="/agences"
                 >
-                  Menu item
+                  Nos agences
                 </NavLink>
               </li>
               <li className="nav-item">
                 <NavLink
                   className={splitLocation[1] === "nav-link" ? "active" : ""}
-                  to="/item2"
+                  to="/services"
                 >
-                  Menu item
+                  Nos services
                 </NavLink>
               </li>
               <li className="nav-item">
                 <NavLink
                   className={splitLocation[1] === "nav-link" ? "active" : ""}
-                  to="/item3"
+                  to="/entreprise"
                 >
-                  Menu item
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink
-                  className={splitLocation[1] === "nav-link" ? "active" : ""}
-                  to="/item4"
-                >
-                  Menu item
+                  A propos
                 </NavLink>
               </li>
             </ul>
           </div>
 
-          <ul className="navbar-nav navbar_right">
-            <li className="nav-item">
-              <NavLink
-                className={splitLocation[1] === "nav-link" ? "active" : ""}
-                to="/loginpage"
-              >
-                <span className="desk_text_sign">Sign in</span>
-                <img src="login.svg" alt="" className="mobile_icon"></img>
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                to="/loginpage"
-                className="btn btn-primary started_btn"
-                type="button"
-              >
-                Get Started
-              </NavLink>
-            </li>
-          </ul>
+          {connected()}
+
           <div className="toggle_navbar">
             <button
               type="button"

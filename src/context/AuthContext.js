@@ -60,7 +60,8 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const registerUser = async (first_name, last_name, email, role, password, confirm_password) => {
+  const registerUser = async (first_name, last_name, email, role, password, confirm_password, phone_number) => {
+    console.log("paswwords", password, confirm_password)
     const response = await fetch("http://127.0.0.1:8000/api/user/signup/", {
       method: "POST",
       headers: {
@@ -72,7 +73,8 @@ export const AuthProvider = ({ children }) => {
         email,
         role,
         password,
-        confirm_password
+        confirm_password,
+        phone_number,
       })
     });
     //response.header("Access-Control-Allow-Origin", "*");
