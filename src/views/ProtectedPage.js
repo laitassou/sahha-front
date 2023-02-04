@@ -1,29 +1,62 @@
-import { useEffect, useState } from "react";
-import useAxios from "../utils/useAxios";
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import AuthContext from "../context/AuthContext";
 
-function ProtectedPage() {
-  const [res, setRes] = useState("");
-  const api = useAxios();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await api.get("/test/");
-        setRes(response.data.response);
-      } catch {
-        setRes("Something went wrong");
+
+const ProtectedPage = () => {
+  const { user, logoutUser } = useContext(AuthContext);
+  function Client(props) {
+    return          (   <>
+      <Link to="/">Home</Link> <br/>
+      <Link to="/annonces">Publier votre annonces</Link>  <br/>
+      <Link to="/list-annonces">Voir vos annonces</Link>  <br/>
+    </>);
+  }
+  
+  function Worker(props) {
+    return          (   <>
+      <Link to="/">Home</Link> <br/>
+      <Link to="/protected">Intervenant</Link>  <br/>
+    </>);
+  }
+  
+  function Manager(props) {
+    return          (   <>
+    <Link to="/">Home</Link> <br/>
+    <Link to="/protected">Gerant</Link> <br/>
+  </>);
+  }
+
+
+  function out_links() {
+    if (user) {
+      if (user.role === 'Client') {
+        return Client()
+      } else if (user.role === 'Worker') {
+        return Worker()
+      } else if (user.role === 'Manager') {
+        return Manager()
+      } else
+      {
+
       }
-    };
-    fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    }
+    
+  }
 
   return (
-    <div>
-      <h1>Protected Page</h1>
-      <p>{res}</p>
-    </div>
+    <nav>
+      <div class="full_height">
+        <div class="container">
+          <br />
+          <br />
+          {out_links()}
+        </div>
+      </div>
+    </nav>
   );
-}
+};
 
 export default ProtectedPage;
+
