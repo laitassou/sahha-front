@@ -36,7 +36,7 @@ function Annonces(props) {
             <form onSubmit={handleSubmit}>
               <div className="textarea">
                 <label>Besoin</label>
-                <textarea placeholder="Text" id="noter-text-area" name="textarea" value={title} onChange={handleTitle}></textarea>
+                <textarea placeholder="Text" height="50px" id="noter-text-area" name="textarea" value={title} onChange={handleTitle}></textarea>
               </div>
               <div className="textarea">
                 <label>Description detailllée</label>

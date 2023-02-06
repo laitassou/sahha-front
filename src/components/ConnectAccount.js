@@ -14,7 +14,7 @@ function ConnectAccount() {
             <Link className="create_btn" to="/signup">
               Create an account
             </Link>
-            <Link className="sign_btn" to="/loginPage">
+            <Link className="sign_btn" to="/login">
               Sign in
             </Link>
           </div>

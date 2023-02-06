@@ -1,34 +1,54 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext} from 'react'
+import AuthContext from "../context/AuthContext";
+import { Link } from "react-router-dom";
 
 const ListAnnonces = () => {
     const auth = localStorage.getItem("authTokens");
     const auth_json = JSON.parse(auth);
     const json_auth_token = auth_json.token;
+    const { user, logoutUser } = useContext(AuthContext);
 
-    let [task, setTask] = useState([])
+    let getAnnonces = async () => {
+      let response = await fetch("http://127.0.0.1:8000/api/annonces/", {
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Token "+json_auth_token
+        }
+      })
+      let data = await response.json()
+      setAnnonceData(data)
+    }
+    let [annonces, setAnnonceData] = useState([])
 
       useEffect(() => {
-        getTask()
+        getAnnonces()
     }, [])
 
-    let getTask = async () => {
-          let response = await fetch("http://127.0.0.1:8000/api/annonce/", {
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": "Token "+json_auth_token
-          }
-        })
-        let data = await response.json()
-        setTask(data)
-    }
 
-  return (
-    <div className="full_height">
-      <div className="container">
-        {task.length && task.map(task => <div>{task.title} </div>)}
-      </div>
-    </div>
-  );
+
+    if (user) {
+      return (
+        <div className="container">
+          <div className="connect_box announce_box">
+            <h2>Vos annonces</h2>
+            <div className="login_form form_box">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>Titre</th>
+                    <th>Categorie</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {annonces.length && annonces.map(annonce => <tr key="{annonce.id}"> <td>{annonce.id}</td><td><Link to={`/annonce/${annonce.id}`}>{annonce.title}</Link></td><td>{annonce.based_category}</td></tr>)}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      );
+    }
 
 }
 

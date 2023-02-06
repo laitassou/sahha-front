@@ -29,7 +29,6 @@ function Signup() {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    alert("pwd:"+first_name+ last_name+email +role+password+" "+password2+ phone_number)
     registerUser(first_name, last_name, email, role, password, password2, phone_number);
   };
 

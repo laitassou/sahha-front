@@ -54,7 +54,7 @@ export const AuthProvider = ({ children }) => {
       //user = jwt(data.token)
       setUser(data);
       localStorage.setItem("authTokens", JSON.stringify(data));
-      history.push("/");
+      history.push("/monespace");
     } else {
       alert("Something went wrong!");
     }
@@ -102,7 +102,7 @@ export const AuthProvider = ({ children }) => {
     const auth_json = JSON.parse(auth)
     const json_auth_token = auth_json.token
     console.log('auth_token:',json_auth_token)
-    const response = await fetch("http://127.0.0.1:8000/api/annonce/", {
+    const response = await fetch("http://127.0.0.1:8000/api/annonces/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

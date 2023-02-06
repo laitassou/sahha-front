@@ -12,12 +12,12 @@ import ProtectedPage from "./views/ProtectedPage";
 
 import Annonces from "./components/annonces";
 import ListAnnonces from "./components/listannonces";
+import SingleAnnonce from "./components/singleannonce";
 
 import "./App.css";
 import ConnectAccount from "./components/ConnectAccount";
 import LoginPage from "./components/LoginPage";
 import Signup from "./components/Signup";
-import Announce from "./components/Announce";
 import Agences from "./components/Agences"
 import Services from "./components/Services"
 import Entreprise from  "./components/Entreprise"
@@ -46,7 +46,8 @@ function App() {
             <Route component={Signup} path="/signup" />
             <Route component={ProtectedPage} path="/monespace" /> 
             <Route component={Annonces} path="/annonces" />
-            <Route component={ListAnnonces} path="/list-annonces" exact /> 
+            <Route component={ListAnnonces} path="/list-annonces/" exact /> 
+            <Route component={SingleAnnonce} path="/annonce/:id/" exact /> 
           </Switch>
         </AuthProvider>
  

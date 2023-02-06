@@ -79,7 +79,7 @@ const Navbar = () => {
         <div>
         <ul className="navbar-nav navbar_right">
         <li className="nav-item">
-          <Link to="monespace">
+          <Link to="/monespace">
             <span className="desk_text_sign">Mon espace</span>
           </Link>
         </li>
