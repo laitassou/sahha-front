@@ -29,7 +29,7 @@ const ListAnnonces = () => {
     if (user) {
       return (
         <div className="container">
-          <div className="connect_box announce_box">
+          <div className="announce_box">
             <h2>Vos annonces</h2>
             <div className="login_form form_box">
               <table>
