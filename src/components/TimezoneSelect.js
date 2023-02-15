@@ -5,7 +5,7 @@ import DemoLink from './DemoLink.component'
 import events from '../resources/events'
 
 export default function Timeslots({ localizer }) {
-  const defaultDate = useMemo(() => new Date(2015, 3, 12), [])
+  const defaultDate = useMemo(() => new Date(), [])
   return (
     <Fragment>
       <DemoLink fileName="timeslots" />

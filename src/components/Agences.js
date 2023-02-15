@@ -22,18 +22,20 @@ const Agences = () => {
 
 
       return (
-        <div className="container">
-          <div className="announce_box">
-          <div className="connect_box announce_box">
-            <h2>Nos agences</h2>
-          </div>
-            <div className="login_form form_box">
+        <div className="full_height">
+          <div className="container">
+            <div className="announce_box">
+            <div className="connect_box announce_box">
+              <h2>Nos agences</h2>
+            </div>
+              <div className="login_form form_box">
 
-              <table>
-                <tbody>
-                  {agences.length && agences.map(agence => <tr key="{agence.id}"> <td>{agence.city}</td><td>{agence.name}</td></tr>)}
-                </tbody>
-              </table>
+                <table>
+                  <tbody>
+                    {agences.length && agences.map(agence => <tr key="{agence.id}"> <td>{agence.city}</td><td>{agence.name}</td></tr>)}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>

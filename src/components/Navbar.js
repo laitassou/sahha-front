@@ -106,17 +106,15 @@ const Navbar = () => {
             className={splitLocation[1] === "nav-link" ? "active" : ""}
             to="/login"
           >
-            <span className="desk_text_sign">Sign in</span>
-            <img src="login.svg" alt="" className="mobile_icon"></img>
-          </NavLink>
+            Se connecter
+           </NavLink>
         </li>
         <li className="nav-item">
           <NavLink
-            to="/login"
+            to="/signup"
             className="btn btn-primary started_btn"
             type="button"
-          >
-            Get Started
+          >Rejoindre
           </NavLink>
         </li>
         </ul>
@@ -130,8 +128,7 @@ const Navbar = () => {
       <div className="container">
         <div className="navbar_box">
           <NavLink className="navbar-brand" to="">
-            <span className="desk_text">Logo name</span>
-            {/* <img className="mobile_logo" alt="" src="mobile_logo.svg" /> */}
+            { <img className="mobile_logo" alt="" src="logo-004.png" /> }
           </NavLink>
 
           <div className="collapse navbar-collapse" id="collapsibleNavbar">

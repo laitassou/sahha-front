@@ -23,18 +23,25 @@ const Services = () => {
 
 
       return (
-        <div className="container">
-          <div className="announce_box">
-          <div className="connect_box announce_box">
-            <h2>Nos services</h2>
-          </div>
-            <div className="login_form form_box">
+        <div className="full_height">
+          <div className="container">
+            <div className="announce_box">
+            <div className="connect_box announce_box">
+              <h2>Nos services</h2>
+            </div>
+              <div className="login_form form_box">
 
-              <table>
-                <tbody>
-                  {categories.length && categories.map(cat => <tr key="{cat.id}"> <td>{cat.id}</td><td>{cat.name}</td></tr>)}
-                </tbody>
-              </table>
+                <table>
+                  <tbody>
+                    <tr>
+                    {categories.length && categories.map(cat => <td><img src={`${cat.name}.png`} /></td>)}
+                    </tr>
+                    <tr>
+                    {categories.length && categories.map(cat => <td key={`${cat.id}`}>{cat.name}</td>)}
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>

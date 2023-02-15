@@ -8,7 +8,6 @@ const ProtectedPage = () => {
   const { user, logoutUser } = useContext(AuthContext);
   function Client(props) {
     return          (   <>
-      <Link to="/">Home</Link> <br/>
       <Link to="/annonces">Publier votre annonces</Link>  <br/>
       <Link to="/list-annonces">Voir vos annonces</Link>  <br/>
     </>);
@@ -49,9 +48,9 @@ const ProtectedPage = () => {
     <nav>
       <div class="full_height">
         <div class="container">
-          <br />
-          <br />
-          {out_links()}
+          <div className="connect_box announce_box">
+            {out_links()}
+          </div>
         </div>
       </div>
     </nav>

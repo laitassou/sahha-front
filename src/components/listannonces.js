@@ -28,22 +28,24 @@ const ListAnnonces = () => {
 
     if (user) {
       return (
-        <div className="container">
-          <div className="announce_box">
-            <h2>Vos annonces</h2>
-            <div className="login_form form_box">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Id</th>
-                    <th>Titre</th>
-                    <th>Categorie</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {annonces.length && annonces.map(annonce => <tr key="{annonce.id}"> <td>{annonce.id}</td><td><Link to={`/annonce/${annonce.id}`}>{annonce.title}</Link></td><td>{annonce.based_category}</td></tr>)}
-                </tbody>
-              </table>
+        <div className="full_height">
+          <div className="container">
+            <div className="connect_box  announce_box">
+              <h2>Vos annonces</h2>
+              <div className="form_box">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Id</th>
+                      <th>Titre</th>
+                      <th>Categorie</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {annonces.length && annonces.map(annonce => <tr key="{annonce.id}"> <td>{annonce.id}</td><td><Link to={`/annonce/${annonce.id}`}>{annonce.title}</Link></td><td>{annonce.based_category}</td></tr>)}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>

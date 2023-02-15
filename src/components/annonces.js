@@ -29,22 +29,26 @@ function Annonces(props) {
 };
   if (user) {
     return (
-      <div className="container">
-        <div className="connect_box announce_box">
-          <h2>Publiez votre annonce</h2>
-          <div className="login_form form_box">
-            <form onSubmit={handleSubmit}>
-              <div className="textarea">
-                <label>Besoin</label>
-                <textarea placeholder="Text" height="50px" id="noter-text-area" name="textarea" value={title} onChange={handleTitle}></textarea>
+      <div className="full_height">
+        <div className="container">
+          <div className="announce_box">
+              <div className="connect_box announce_box">
+                <h2>Publiez votre annonce</h2>
+                <div className="login_form form_box">
+                  <form onSubmit={handleSubmit}>
+                    <div className="textarea">
+                      <label>Besoin</label>
+                      <textarea placeholder="Text" height="50px" id="noter-text-area" name="textarea" value={title} onChange={handleTitle}></textarea>
+                    </div>
+                    <div className="textarea">
+                      <label>Description detailllée</label>
+                      <textarea placeholder="Text"  id="noter-text-area" name="textarea" value={description} onChange={handleDesc} ></textarea>
+                    </div>
+                    <InputBox class="submit_btn" type="submit" value="Publier" />
+                  </form>
+                </div>
               </div>
-              <div className="textarea">
-                <label>Description detailllée</label>
-                <textarea placeholder="Text"  id="noter-text-area" name="textarea" value={description} onChange={handleDesc} ></textarea>
-              </div>
-              <InputBox class="submit_btn" type="submit" value="Publier" />
-            </form>
-          </div>
+            </div>
         </div>
       </div>
     );

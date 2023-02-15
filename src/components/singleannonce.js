@@ -7,7 +7,7 @@ import { useParams} from 'react-router-dom';
 import {momentLocalizer} from 'react-big-calendar'
 import moment from 'moment'
 import Selectable from './Calendar'
-
+require('moment/locale/fr.js')
 const localizer = momentLocalizer(moment)
 
 
@@ -20,7 +20,7 @@ const SingleAnnonce = () => {
     const { id } = useParams();
 
     let getSingleAnnonce = async () => {
-      let url = "http://127.0.0.1:8000/api/annonce/"+id+"/"
+      let url = "http://127.0.0.1:8000/api/slots/"+id+"/"
       console.log("url:"+url)
       let response = await fetch(url, {
         headers: {
@@ -37,8 +37,6 @@ const SingleAnnonce = () => {
         getSingleAnnonce()
     }, [])
 
-
-
     if (user) {
       return (
         <div className="container">
@@ -48,7 +46,7 @@ const SingleAnnonce = () => {
             <h3>{annonce.title} </h3>
             {annonce.description}
             </div>
-             <Selectable localizer={localizer} />
+             <Selectable localizer={localizer} data={annonce} />
           </div>
         </div>
       );

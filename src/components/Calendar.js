@@ -1,6 +1,6 @@
 import React, { Fragment, useCallback, useMemo, useState } from 'react'
 import PropTypes from 'prop-types'
-//import events from '../resources/events'
+import events from '../resources/events'
 import { Calendar, Views, DateLocalizer } from 'react-big-calendar'
 import Card from '../resources/Card'
 import DemoLink from './DemoLink.component'
@@ -11,7 +11,6 @@ import 'react-big-calendar/lib/addons/dragAndDrop/styles.scss'
 
 const DragAndDropCalendar = withDragAndDrop(Calendar)
 
-const events = [];
 
 const adjEvents = events.map((it, ind) => ({
   ...it,
@@ -20,12 +19,11 @@ const adjEvents = events.map((it, ind) => ({
 
 const formatName = (name, count) => `${name} ID ${count}`
 
-export default function DnDOutsideResource({ localizer }) {
+export default function DnDOutsideResource({ localizer, data }) {
   const [myEvents, setMyEvents] = useState(adjEvents)
   const [draggedEvent, setDraggedEvent] = useState()
   const [displayDragItemInCell, setDisplayDragItemInCell] = useState(true)
   const [counters, setCounters] = useState({ item1: 0, item2: 0 })
-
   const eventPropGetter = useCallback(
     (event) => ({
       ...(event.isDraggable
@@ -35,6 +33,7 @@ export default function DnDOutsideResource({ localizer }) {
     []
   )
   //,
+
   const handleDragStart = useCallback((event) => setDraggedEvent(event), [])
 
   const dragFromOutsideItem = useCallback(() => draggedEvent, [draggedEvent])
@@ -53,6 +52,7 @@ export default function DnDOutsideResource({ localizer }) {
     },
     [draggedEvent]
   )
+
 
   const handleDisplayDragItemInCell = useCallback(
     () => setDisplayDragItemInCell((prev) => !prev),
@@ -75,6 +75,8 @@ export default function DnDOutsideResource({ localizer }) {
     },
     [setMyEvents]
   )
+
+
   /*
   const handleSelectSlot = useCallback(
     ({ start, end }) => {
@@ -136,7 +138,7 @@ export default function DnDOutsideResource({ localizer }) {
     [setMyEvents]
   )
 
-  const defaultDate = useMemo(() => new Date(2015, 3, 12), [])
+  const defaultDate = useMemo(() => new Date(), [])
 
   return (
     <Fragment>
@@ -195,6 +197,7 @@ export default function DnDOutsideResource({ localizer }) {
           onEventDrop={moveEvent}
           onEventResize={resizeEvent}
           onSelectSlot={newEvent}
+          data={data}
           resizable
           selectable
         />
