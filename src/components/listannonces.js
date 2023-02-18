@@ -30,10 +30,13 @@ const ListAnnonces = () => {
       return (
         <div className="full_height">
           <div className="container">
-            <div className="connect_box  announce_box">
+            <div className="connect_box  announce_box"></div>
+
+
+            <div className="announce_box">
               <h2>Vos annonces</h2>
               <div className="form_box">
-                <table>
+                <table class ="styled-table">
                   <thead>
                     <tr>
                       <th>Id</th>

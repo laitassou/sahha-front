@@ -39,15 +39,22 @@ const SingleAnnonce = () => {
 
     if (user) {
       return (
-        <div className="container">
-          <div className="announce_box">
-            <h2>Details de votre annonce</h2>
-            <div className="form_box">
-            <h3>{annonce.title} </h3>
-            {annonce.description}
+        <div className="">
+          <div className="container">
+            <div className="connect_box  announce_box"></div>
+
+
+          <div className="container">
+            <div className="announce_box">
+              <h2>Details de votre annonce</h2>
+              <div className="form_box">
+              <h3>{annonce.title} </h3>
+              {annonce.description}
+              </div>
+              <Selectable localizer={localizer} data={annonce} />
             </div>
-             <Selectable localizer={localizer} data={annonce} />
           </div>
+        </div>
         </div>
       );
     }
