@@ -1,6 +1,6 @@
 import React, { Fragment, useCallback, useMemo, useState } from 'react'
 import PropTypes from 'prop-types'
-import events from '../resources/events'
+//import events from '../resources/events'
 import { Calendar, Views, DateLocalizer } from 'react-big-calendar'
 import Card from '../resources/Card'
 import DemoLink from './DemoLink.component'
@@ -11,16 +11,30 @@ import 'react-big-calendar/lib/addons/dragAndDrop/styles.scss'
 
 const DragAndDropCalendar = withDragAndDrop(Calendar)
 
+var events = []
 
-const adjEvents = events.map((it, ind) => ({
-  ...it,
-  isDraggable: true,
-}))
 
 const formatName = (name, count) => `${name} ID ${count}`
 
 export default function DnDOutsideResource({ localizer, data }) {
+
+
+  var i = 0;
+  while (i < data.length) {
+    const el = data[i];
+    //alert(el);
+
+    events.push({"id": el.id, "title": el.description, "start": new Date(el.start_time), "end": new Date(el.end_time),  "isDraggable": true,});
+    i++;
+  };
+  
+  const adjEvents = events.map((it, ind) => ({
+    ...it,
+    isDraggable: true,
+  }))
   const [myEvents, setMyEvents] = useState(adjEvents)
+
+
   const [draggedEvent, setDraggedEvent] = useState()
   const [displayDragItemInCell, setDisplayDragItemInCell] = useState(true)
   const [counters, setCounters] = useState({ item1: 0, item2: 0 })
