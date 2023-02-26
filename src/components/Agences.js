@@ -30,9 +30,16 @@ const Agences = () => {
             </div>
               <div className="login_form form_box">
 
-                <table>
+                <table class ="styled-table">
+                <thead>
+                    <tr>
+                       <th>Nom</th>
+                       <th>Ville</th>
+                       <th>Addresse</th>
+                    </tr>
+                  </thead>
                   <tbody>
-                    {agences.length && agences.map(agence => <tr key="{agence.id}"> <td>{agence.city}</td><td>{agence.name}</td></tr>)}
+                    {agences.length && agences.map(agence => <tr key="{agence.id}"> <td>{agence.name}</td><td>{agence.city}</td><td>{agence.address}</td></tr>)}
                   </tbody>
                 </table>
               </div>

@@ -21,30 +21,30 @@ function LoginPage() {
     <div className=" full_height mobile_box">
       <div className="container">
         <div className="connect_box login_page">
-          <h2>Welcome back</h2>
-          <p>Log in to your account to get back to your hub </p>
+          <h2>Bienvenue</h2>
+          <p>Connectez vous et accedez à votre espace </p>
           <div className="login_form form_box">
             <form  onSubmit={handleSubmit}>
               <InputBox
-                label="Username"
+                label="Email"
                 type="text"
                 id="uname"
                 for="uname"
                 name="uname"
-                placeholder="Username"
+                placeholder="Email"
               />
               <InputBox
-                label="Password"
+                label="Mot de passe"
                 type="password"
                 id="pwd"
                 for="password"
                 name="password"
-                placeholder="Enter your password"
+                placeholder="Enterez votre mot de passe"
               />
-              <InputBox class="submit_btn" type="submit" value="Log in" />
+              <InputBox class="submit_btn" type="submit" value="Se connecter" />
               <div className="login_btm_box">
                 <p>
-                  Don’t have an account? <Link to="/signup">Sign up</Link>
+                  Pas encore de compte? <Link to="/signup">Créer un compte</Link>
                 </p>
               </div>
             </form>

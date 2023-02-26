@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useContext} from 'react'
-import { Link } from "react-router-dom";
+import React, { useState, useEffect} from 'react'
+import CardComponent from "./cardCategories"
 
 const Services = () => {
 
@@ -30,18 +30,9 @@ const Services = () => {
               <h2>Nos services</h2>
             </div>
               <div className="login_form form_box">
-
-                <table>
-                  <tbody>
-                    <tr>
-                    {categories.length && categories.map(cat => <td><img src={`${cat.name}.png`} /></td>)}
-                    </tr>
-                    <tr>
-                    {categories.length && categories.map(cat => <td key={`${cat.id}`}>{cat.name}</td>)}
-                    </tr>
-                  </tbody>
-                </table>
+                <CardComponent />
               </div>
+
             </div>
           </div>
         </div>

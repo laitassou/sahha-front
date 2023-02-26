@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Agences  from "./Agences";
 
 function ConnectAccount() {
   return (
@@ -7,21 +8,19 @@ function ConnectAccount() {
       <div className="container">
         <div className="connect_box">
           <h2>
-            Connect with us <br />
+            Rejoignez nous <br />
             <span>on the go</span>
           </h2>
           <div className="button_box">
             <Link className="create_btn" to="/signup">
-              Create an account
+              Créer votr compte
             </Link>
             <Link className="sign_btn" to="/login">
-              Sign in
+              Se  logger
             </Link>
           </div>
         </div>
-        <div className="mobile_img">
-          <img src="home_bg.png" alt="home_img" />
-        </div>
+
       </div>
     </div>
   );

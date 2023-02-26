@@ -6,8 +6,8 @@ import Select from 'react-select';
 const options = [
   {value: "Worker", label:"Aide à domicile"},
   {value: "Client", label:"Client"},
-  {value: "Manager", label:"Gestionnaire"},
-  {value: "Supervisor", label:"Superviseur"},    
+  //{value: "Manager", label:"Gestionnaire"},
+  //{value: "Supervisor", label:"Superviseur"},    
 ]
 
 function Register() {

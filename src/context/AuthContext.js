@@ -147,6 +147,34 @@ export const AuthProvider = ({ children }) => {
 
 
 
+  const publishSlots = async (annonce_id, description, start_time, end_time) => {
+    const auth = localStorage.getItem("authTokens");
+    const auth_json = JSON.parse(auth)
+    const json_auth_token = auth_json.token
+    console.log('auth_token:',json_auth_token)
+    const response = await fetch("http://127.0.0.1:8000/api/slots/"+annonce_id+"/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Token "+json_auth_token
+      },
+      body: JSON.stringify({
+        description,
+        start_time,
+        end_time,
+      })
+    });
+    //response.header("Access-Control-Allow-Origin", "*");
+    //response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+
+    if (response.status === 200) {
+      history.push("/");
+
+    } else {
+      alert("Erreur de publication");
+    }
+  };
+
   const contextData = {
     user,
     setUser,
@@ -157,6 +185,8 @@ export const AuthProvider = ({ children }) => {
     logoutUser,
     publishAnnonce,
     list_annonces,
+    publishSlots,
+
   };
 
   useEffect(() => {
@@ -172,3 +202,5 @@ export const AuthProvider = ({ children }) => {
     </AuthContext.Provider>
   );
 };
+
+

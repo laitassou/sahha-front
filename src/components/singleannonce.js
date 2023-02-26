@@ -42,7 +42,7 @@ const SingleAnnonce = () => {
         <div className="">
           <div className="container">
             <div className="connect_box  announce_box"></div>
-
+              <Link to="/list-annonces">Retour aux annonces</Link> 
 
           <div className="container">
             <div className="announce_box">
@@ -52,6 +52,9 @@ const SingleAnnonce = () => {
               {annonce.description}
               </div>
               <Selectable localizer={localizer} data={annonce} />
+            </div>
+            <div class="navbar">
+
             </div>
           </div>
         </div>

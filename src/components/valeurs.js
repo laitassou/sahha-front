@@ -1,18 +1,17 @@
 import React from "react";
 import InputBox from "./InputBox";
 
-function Entreprise() {
+function Valeurs() {
     return (
         <div className="full_height">
           <div className="container">
             <div className="connect_box announce_box">
-              <h2>Notre histoire</h2>
-              <p>Autour de la temathique de famille et dependance et aide à la personner
-                Notre histoire est née d'un besoin familial, </p>
+              <h2>Nos valeurs</h2>
+      
             </div>
           </div>
       </div>
       );
 }
 
-export default Entreprise;
+export default Valeurs;

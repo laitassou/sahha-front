@@ -76,7 +76,6 @@ const Navbar = () => {
   function connected(){
     if (user) {
       return (
-        <div>
         <ul className="navbar-nav navbar_right">
         <li className="nav-item">
           <Link to="/monespace">
@@ -90,16 +89,15 @@ const Navbar = () => {
             type="button"
             onClick={logoutUser}
           >
-            Logout
+            Deconnecter
           </Link>
         </li>
         </ul>
-      </div>
       );
     }
     else {
       return (
-        <div>
+
         <ul className="navbar-nav navbar_right">
         <li className="nav-item">
           <NavLink
@@ -118,7 +116,6 @@ const Navbar = () => {
           </NavLink>
         </li>
         </ul>
-      </div>
       );
     }
   }
@@ -147,6 +144,22 @@ const Navbar = () => {
                   to="/services"
                 >
                   Nos services
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink
+                  className={splitLocation[1] === "nav-link" ? "active" : ""}
+                  to="/howto"
+                >
+                  Fonctionnement
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink
+                  className={splitLocation[1] === "nav-link" ? "active" : ""}
+                  to="/valeurs"
+                >
+                  Nos valeurs
                 </NavLink>
               </li>
               <li className="nav-item">

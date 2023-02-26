@@ -34,7 +34,7 @@ const ListAnnonces = () => {
 
 
             <div className="announce_box">
-              <h2>Vos annonces</h2>
+              <h2>Mes annonces</h2>
               <div className="form_box">
                 <table class ="styled-table">
                   <thead>
