@@ -1,8 +1,4 @@
 import React from "react";
-
-import "./index-out.css";
-import "./App-out.css";
-
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";

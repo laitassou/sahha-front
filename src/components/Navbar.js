@@ -128,7 +128,7 @@ const Navbar = () => {
             { <img className="mobile_logo" alt="" src="logo-004.png" /> }
           </NavLink>
 
-          <div className="collapse navbar-collapse" id="collapsibleNavbar">
+          <div className="navbar-collapse" id="collapsibleNavbar">
             <ul className="navbar-nav">
               <li className="nav-item">
                 <NavLink
