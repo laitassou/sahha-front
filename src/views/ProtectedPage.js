@@ -46,8 +46,8 @@ const ProtectedPage = () => {
 
   return (
     <nav>
-      <div class="full_height">
-        <div class="container">
+      <div className="full_height">
+        <div className="container">
           <div className="connect_box announce_box personal-space">
             {out_links()}
           </div>

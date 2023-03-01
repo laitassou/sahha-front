@@ -20,7 +20,7 @@ function Guide() {
           <br />
           <br />
           </p>
-          <div class="box">
+          <div className="box">
           <h2>Déroulementt</h2>
         <ul>
           <li><span>1</span> Notre agence prend contact avec vous pour évaluer vos besoins</li>
