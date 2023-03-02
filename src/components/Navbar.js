@@ -110,7 +110,7 @@ const Navbar = () => {
 			<div className="container">
 				<div className="navbar_box">
 					<NavLink className="navbar-brand" to="">
-						{<img className="mobile_logo" alt="" src="logo-004.png" />}
+						{<img className="mobile_logo" alt="" src="assets/logo-004.png" />}
 					</NavLink>
 
 					<div className="navbar-collapse" id="collapsibleNavbar">
