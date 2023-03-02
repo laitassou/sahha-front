@@ -1,0 +1,8 @@
+node_modules/
+package.json
+*lock.yaml
+.vscode
+README.md
+.husky
+.gitignore
+build
