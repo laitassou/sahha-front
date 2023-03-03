@@ -1,4 +1,5 @@
 import { BodySection } from 'components/common/BodySection';
+import Button from 'components/common/Button';
 import SectionTitle from 'components/common/SectionTitle';
 
 const Histoire = () => {
@@ -14,9 +15,10 @@ const Histoire = () => {
 						eveniet corporis sit! Repellat?
 					</p>
 				</SectionTitle>
-				<div className="max-w-xs mx-auto">
+				<div className="max-w-xs mx-auto mb-6">
 					<img src="/assets/illustrations/about.png" alt="About png" />
 				</div>
+				<Button>Rejoignez nous</Button>
 			</div>
 		</BodySection>
 	);
