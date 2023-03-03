@@ -4,7 +4,7 @@ const Button = ({ children, className, secondary }) => {
 	return (
 		<button
 			className={clsx(
-				'px-4 py-2 xl:px-10 lg:py-4 rounded-lg border-2 shadow-primary-500/30 transition-all duration-300',
+				'px-6 py-3 xl:px-10 lg:py-4 rounded-lg border-2 shadow-primary-500/30 transition-all duration-300',
 				className,
 				{
 					'text-primary-500 bg-white border-primary-500': secondary,

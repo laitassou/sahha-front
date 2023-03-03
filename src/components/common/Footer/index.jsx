@@ -19,15 +19,15 @@ const Footer = () => {
 				<div className="flex flex-wrap">
 					<FooterLinksList title="Lien important">
 						<FooterLink text="Nos agences" to="/#agences" />
-						<FooterLink text="Fonctinnement" to="/#agences" />
+						<FooterLink text="Fonctionnement" to="/#agences" />
 						<FooterLink text="Valeurs" to="/#agences" />
 						<FooterLink text="A Props" to="/#agences" />
 					</FooterLinksList>
 					<FooterLinksList title="Services">
-						<FooterLink text="Nos agences" to="/#agences" />
-						<FooterLink text="Fonctinnement" to="/#agences" />
-						<FooterLink text="Valeurs" to="/#agences" />
-						<FooterLink text="A Props" to="/#agences" />
+						<FooterLink text="Service 1" to="/#agences" />
+						<FooterLink text="Service 2" to="/#agences" />
+						<FooterLink text="Service 3" to="/#agences" />
+						<FooterLink text="Service 4" to="/#agences" />
 					</FooterLinksList>
 					<FooterLinksList title="Personel">
 						<FooterLink text="Se connecter" to="/#agences" />
