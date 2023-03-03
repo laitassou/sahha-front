@@ -1,6 +1,7 @@
 import SectionTitle from 'components/common/SectionTitle';
 import Valeur from './Valeur';
 import { Brain, HeartBeating, SuitCase, Tools } from 'assets/icons';
+import { BodySection } from 'components/common/BodySection';
 
 const valeurs = [
 	{
@@ -37,7 +38,7 @@ const valeurs = [
 
 const Valeurs = () => {
 	return (
-		<section id="valeurs" className="pb-40">
+		<BodySection id="valeurs">
 			<div className="container">
 				<SectionTitle title="Nos valeurs" />
 				<div className="overflow-hidden md:-translate-x-6">
@@ -48,7 +49,7 @@ const Valeurs = () => {
 					</div>
 				</div>
 			</div>
-		</section>
+		</BodySection>
 	);
 };
 

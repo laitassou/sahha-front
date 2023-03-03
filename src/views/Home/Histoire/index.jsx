@@ -1,8 +1,9 @@
+import { BodySection } from 'components/common/BodySection';
 import SectionTitle from 'components/common/SectionTitle';
 
 const Histoire = () => {
 	return (
-		<section id="histoire" className="pb-40 lg:text-center">
+		<BodySection id="histoire" className="lg:text-center">
 			<div className="container flex-col items-center justify-center">
 				<SectionTitle title="Notre histoire" className="lg:items-center">
 					Autour de la temathique de famille et dependance et aide à la personner Notre histoire est née d'un besoin
@@ -17,7 +18,7 @@ const Histoire = () => {
 					<img src="/assets/illustrations/about.png" alt="About png" />
 				</div>
 			</div>
-		</section>
+		</BodySection>
 	);
 };
 

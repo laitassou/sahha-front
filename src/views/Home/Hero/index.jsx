@@ -1,9 +1,10 @@
+import { BodySection } from 'components/common/BodySection';
 import Service from './Service';
 import Button from 'components/common/Button';
 
 const Hero = () => {
 	return (
-		<section id="hero" className="pt-32 pb-60">
+		<BodySection id="hero" className="!pt-32">
 			<div className="container flex flex-col items-start justify-between lg:flex-row">
 				<div className="flex flex-col items-start">
 					<span className="px-4 py-1 font-bold text-white uppercase rounded bg-secondary-500">SAHHA</span>
@@ -20,7 +21,7 @@ const Hero = () => {
 					<img className="object-contain w-full h-full" src="/assets/illustrations/hero.png" alt="Hero SVG" />
 				</div>
 			</div>
-		</section>
+		</BodySection>
 	);
 };
 

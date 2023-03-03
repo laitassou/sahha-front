@@ -1,5 +1,6 @@
 import SectionTitle from 'components/common/SectionTitle';
 import Step from './Step';
+import { BodySection } from 'components/common/BodySection';
 
 const steps = [
 	'Notre agence prend contact avec vous pour évaluer vos besoins',
@@ -9,7 +10,7 @@ const steps = [
 ];
 const Fonctionnement = () => {
 	return (
-		<section id="Fonctionnement" className="pb-40">
+		<BodySection id="Fonctionnement">
 			<div className="container">
 				<div className="flex justify-between">
 					<div className="mt-5 mr-4">
@@ -34,7 +35,7 @@ const Fonctionnement = () => {
 					</div>
 				</div>
 			</div>
-		</section>
+		</BodySection>
 	);
 };
 

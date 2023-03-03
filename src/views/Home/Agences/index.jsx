@@ -1,5 +1,6 @@
 import SectionTitle from 'components/common/SectionTitle';
 import { ReactComponent as Location } from 'assets/icons/location.svg';
+import { BodySection } from 'components/common/BodySection';
 
 const agencies = [
 	{
@@ -15,7 +16,7 @@ const agencies = [
 ];
 const Agences = () => {
 	return (
-		<section id="agencies" className="px-0 pb-40 lg:px-40">
+		<BodySection id="agencies" className="px-0 lg:px-40">
 			<div className="container">
 				<SectionTitle title="Nos Agences" className="text-center" />
 				<div className="flex flex-wrap justify-center">
@@ -33,7 +34,7 @@ const Agences = () => {
 					))}
 				</div>
 			</div>
-		</section>
+		</BodySection>
 	);
 };
 

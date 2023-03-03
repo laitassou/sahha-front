@@ -10,10 +10,11 @@ import {
 	Soin,
 	Sonde,
 } from 'assets/icons';
+import { BodySection } from 'components/common/BodySection';
 
 const Services = () => {
 	return (
-		<section id="services" className="pb-40">
+		<BodySection id="services">
 			<div className="container">
 				<SectionTitle title="Nos Services" className="text-center" />
 				<div className="flex flex-wrap">
@@ -51,7 +52,7 @@ const Services = () => {
 					</ServiceSingle>
 				</div>
 			</div>
-		</section>
+		</BodySection>
 	);
 };
 
