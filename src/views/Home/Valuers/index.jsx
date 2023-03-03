@@ -1,9 +1,8 @@
-import React from 'react';
-import SectionTitle from '../../../components/common/SectionTitle';
-import { ReactComponent as HeartBeating } from '../../../assets/icons/heart-beating.svg';
-import { ReactComponent as SuitCase } from '../../../assets/icons/suitcase.svg';
-import { ReactComponent as Brain } from '../../../assets/icons/brain.svg';
-import { ReactComponent as Tools } from '../../../assets/icons/tools.svg';
+import SectionTitle from 'components/common/SectionTitle';
+import { ReactComponent as HeartBeating } from 'assets/icons/heart-beating.svg';
+import { ReactComponent as SuitCase } from 'assets/icons/suitcase.svg';
+import { ReactComponent as Brain } from 'assets/icons/brain.svg';
+import { ReactComponent as Tools } from 'assets/icons/tools.svg';
 import Valeur from './Valeur';
 
 const valeurs = [

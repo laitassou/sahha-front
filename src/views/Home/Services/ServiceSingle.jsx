@@ -1,5 +1,3 @@
-import React from 'react';
-
 const ServiceSingle = ({ title, icon, children }) => {
 	return (
 		<div className="w-full pb-4 pr-4 lg:w-1/3 xl:w-1/4 group">

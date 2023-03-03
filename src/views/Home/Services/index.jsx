@@ -1,14 +1,13 @@
-import React from 'react';
-import SectionTitle from '../../../components/common/SectionTitle';
+import SectionTitle from 'components/common/SectionTitle';
 import ServiceSingle from './ServiceSingle';
-import { ReactComponent as Injection } from '../../../assets/icons/injection.svg';
-import { ReactComponent as Sonde } from '../../../assets/icons/sonde.svg';
-import { ReactComponent as Pansements } from '../../../assets/icons/pansements.svg';
-import { ReactComponent as Soin } from '../../../assets/icons/soin.svg';
-import { ReactComponent as Hospitalisation } from '../../../assets/icons/hospatilisation.svg';
-import { ReactComponent as Kinésitherapie } from '../../../assets/icons/kinésitherapie.svg';
-import { ReactComponent as Sang } from '../../../assets/icons/sang.svg';
-import { ReactComponent as Accompagnement } from '../../../assets/icons/accompagnement.svg';
+import { ReactComponent as Injection } from 'assets/icons/injection.svg';
+import { ReactComponent as Sonde } from 'assets/icons/sonde.svg';
+import { ReactComponent as Pansements } from 'assets/icons/pansements.svg';
+import { ReactComponent as Soin } from 'assets/icons/soin.svg';
+import { ReactComponent as Hospitalisation } from 'assets/icons/hospatilisation.svg';
+import { ReactComponent as Kinésitherapie } from 'assets/icons/kinésitherapie.svg';
+import { ReactComponent as Sang } from 'assets/icons/sang.svg';
+import { ReactComponent as Accompagnement } from 'assets/icons/accompagnement.svg';
 
 const Services = () => {
 	return (

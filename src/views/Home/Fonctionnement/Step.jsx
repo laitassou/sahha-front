@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Step = ({ number, text }) => {
 	return (
 		<div className="relative flex items-center p-4 mb-2 transition duration-300 border border-transparent rounded-lg cursor-pointer last-of-type:mb-0 hover:bg-white md:-translate-x-5 hover:border-primary-500/20">

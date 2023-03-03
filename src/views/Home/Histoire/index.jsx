@@ -1,5 +1,4 @@
-import React from 'react';
-import SectionTitle from '../../../components/common/SectionTitle';
+import SectionTitle from 'components/common/SectionTitle';
 
 const Histoire = () => {
 	return (

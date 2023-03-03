@@ -1,6 +1,5 @@
-import React from 'react';
-import SectionTitle from '../../../components/common/SectionTitle';
-import { ReactComponent as Location } from '../../../assets/icons/location.svg';
+import SectionTitle from 'components/common/SectionTitle';
+import { ReactComponent as Location } from 'assets/icons/location.svg';
 
 const agencies = [
 	{
