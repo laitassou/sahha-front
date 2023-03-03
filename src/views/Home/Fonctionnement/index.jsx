@@ -10,7 +10,7 @@ const steps = [
 ];
 const Fonctionnement = () => {
 	return (
-		<BodySection id="Fonctionnement">
+		<BodySection id="fonctionnment">
 			<div className="container">
 				<div className="flex justify-between">
 					<div className="mt-5 mr-4">

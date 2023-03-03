@@ -16,7 +16,7 @@ const agencies = [
 ];
 const Agences = () => {
 	return (
-		<BodySection id="agencies" className="px-0 lg:px-40">
+		<BodySection id="agences" className="px-0 lg:px-40">
 			<div className="container">
 				<SectionTitle title="Nos Agences" className="text-center" />
 				<div className="flex flex-wrap justify-center">

@@ -55,16 +55,16 @@ const Navbar = () => {
 							<NavBarLink to="/#agences">Nos agences</NavBarLink>
 						</NavItem>
 						<NavItem>
-							<NavBarLink to="/#agences">Nos services</NavBarLink>
+							<NavBarLink to="/#services">Nos services</NavBarLink>
 						</NavItem>
 						<NavItem>
-							<NavBarLink to="/#agences">Fonctionnement</NavBarLink>
+							<NavBarLink to="/#fonctionnment">Fonctionnement</NavBarLink>
 						</NavItem>
 						<NavItem>
-							<NavBarLink to="/#agences">Nos valeurs</NavBarLink>
+							<NavBarLink to="/#valeurs">Nos valeurs</NavBarLink>
 						</NavItem>
 						<NavItem>
-							<NavBarLink to="/#agences">A propos</NavBarLink>
+							<NavBarLink to="/#apropos">A propos</NavBarLink>
 						</NavItem>
 						<NavItem className="flex items-center justify-center py-6 lg:pl-5 lg:py-0">
 							<Button secondary className="mr-4">

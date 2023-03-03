@@ -4,7 +4,7 @@ import SectionTitle from 'components/common/SectionTitle';
 
 const Histoire = () => {
 	return (
-		<BodySection id="histoire" className="lg:text-center">
+		<BodySection id="apropos" className="lg:text-center">
 			<div className="container flex-col items-center justify-center">
 				<SectionTitle title="Notre histoire" className="lg:items-center">
 					Autour de la temathique de famille et dependance et aide à la personner Notre histoire est née d'un besoin
