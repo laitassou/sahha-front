@@ -22,7 +22,8 @@ const Fonctionnement = () => {
 							souci constant de rendre le quotidien des personnes âgées plus agréable et de faciliter leur maintien à
 							domicile.
 						</SectionTitle>
-						<div className="flex flex-col w-fit">
+						<div className="relative flex flex-col w-fit">
+							<span className="absolute top-0 left-0 w-1 h-full translate-x-8 rounded-full md:translate-x-3 bg-secondary-500/20"></span>
 							{steps.map((step, i) => (
 								<Step key={i} text={step} number={i + 1} />
 							))}
