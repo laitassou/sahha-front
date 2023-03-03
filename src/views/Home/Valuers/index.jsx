@@ -1,9 +1,6 @@
 import SectionTitle from 'components/common/SectionTitle';
-import { ReactComponent as HeartBeating } from 'assets/icons/heart-beating.svg';
-import { ReactComponent as SuitCase } from 'assets/icons/suitcase.svg';
-import { ReactComponent as Brain } from 'assets/icons/brain.svg';
-import { ReactComponent as Tools } from 'assets/icons/tools.svg';
 import Valeur from './Valeur';
+import { Brain, HeartBeating, SuitCase, Tools } from 'assets/icons';
 
 const valeurs = [
 	{
@@ -29,12 +26,12 @@ const valeurs = [
 	{
 		title: 'Valeur 1',
 		text: "Autour de la temathique de famille et dependance et aide à la personner Notre histoire est née d'un besoin familial",
-		Icon: <Tools className="w-16 mb-4" />,
+		Icon: <Brain className="w-16 mb-4" />,
 	},
 	{
 		title: 'Valeur 1',
 		text: "Autour de la temathique de famille et dependance et aide à la personner Notre histoire est née d'un besoin familial",
-		Icon: <Tools className="w-16 mb-4" />,
+		Icon: <HeartBeating className="w-16 mb-4" />,
 	},
 ];
 

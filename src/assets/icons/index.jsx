@@ -1,0 +1,12 @@
+export { ReactComponent as HeartBeating } from './heart-beating.svg';
+export { ReactComponent as SuitCase } from './suitcase.svg';
+export { ReactComponent as Brain } from './brain.svg';
+export { ReactComponent as Tools } from './tools.svg';
+export { ReactComponent as Injection } from './injection.svg';
+export { ReactComponent as Sonde } from './sonde.svg';
+export { ReactComponent as Pansements } from './pansements.svg';
+export { ReactComponent as Soin } from './soin.svg';
+export { ReactComponent as Hospitalisation } from './hospatilisation.svg';
+export { ReactComponent as Kinésitherapie } from './kinésitherapie.svg';
+export { ReactComponent as Sang } from './sang.svg';
+export { ReactComponent as Accompagnement } from './accompagnement.svg';
