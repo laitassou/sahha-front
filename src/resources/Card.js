@@ -1,15 +1,15 @@
-import React from 'react'
+import React from 'react';
 
-const propTypes = {}
+const propTypes = {};
 
 function Card({ children, className, style }) {
-  return (
-    <div className={`${className || ''} card`} style={style}>
-      {children}
-    </div>
-  )
+	return (
+		<div className={`${className || ''} card`} style={style}>
+			{children}
+		</div>
+	);
 }
 
-Card.propTypes = propTypes
+Card.propTypes = propTypes;
 
-export default Card
+export default Card;
