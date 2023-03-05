@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import NavBarLink from './NavbarLink';
 import Button from '../Button';
 import NavItem from './NavItem';
@@ -52,7 +52,7 @@ const Navbar = () => {
 						</Button></NavBarLink>
 					</NavItem>
 					<NavItem>
-						<NavBarLink ><Button onClick={logoutUser} > Deconnecter</Button></NavBarLink>
+						<Link onClick={logoutUser}>Deconnecter</Link>
 					</NavItem>
 
 				</NavItem>

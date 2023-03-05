@@ -4,6 +4,10 @@ import AuthContext from '../context/AuthContext';
 
 const ProtectedPage = () => {
 	const { user, logoutUser } = useContext(AuthContext);
+	const auth = localStorage.getItem('authTokens');
+	const auth_json = JSON.parse(auth);
+	const json_auth_token = auth_json.token;
+
 	function Client(props) {
 		return (
 			<>
@@ -32,12 +36,12 @@ const ProtectedPage = () => {
 	}
 
 	function out_links() {
-		if (user) {
-			if (user.role === 'Client') {
+		if (auth_json) {
+			if (auth_json.role === 'Client') {
 				return Client();
-			} else if (user.role === 'Worker') {
+			} else if (auth_json.role === 'Worker') {
 				return Worker();
-			} else if (user.role === 'Manager') {
+			} else if (auth_json.role === 'Manager') {
 				return Manager();
 			} else {
 			}

@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import jwt from 'jwt-decode';
+import jwt_decode from 'jwt-decode';
 
 const AuthContext = createContext();
 
@@ -42,7 +42,7 @@ export const AuthProvider = ({ children }) => {
 		const data = await response.json();
 		if (response.status === 200) {
 			//setAuthTokens(data);
-			//user = jwt(data.token)
+			//user = jwt_decode(data.getItem("token"))
 			setUser(data);
 			localStorage.setItem('authTokens', JSON.stringify(data));
 			history.push('/monespace');
@@ -175,7 +175,7 @@ export const AuthProvider = ({ children }) => {
 
 	useEffect(() => {
 		if (authTokens) {
-			setUser(jwt(authTokens.token));
+			setUser((authTokens.token));
 		}
 		setLoading(false);
 	}, [authTokens, loading]);

@@ -9,9 +9,9 @@ function LoginPage() {
 	const { loginUser } = useContext(AuthContext);
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		const username = e.target.uname.value;
+		const email = e.target.uname.value;
 		const password = e.target.pwd.value;
-		username.length > 0 && loginUser(username, password);
+		email.length > 0 && loginUser(email, password);
 	};
 
 	return (
