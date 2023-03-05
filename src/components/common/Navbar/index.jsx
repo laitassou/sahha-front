@@ -6,10 +6,16 @@ import { useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
 import NavToggler from './NavToggler';
 
+import AuthContext from '../../../context/AuthContext';
+import { useContext } from 'react';
+
+
 const Navbar = () => {
 	const [openNavbar, setOpenNavbar] = useState(false);
 	const navRef = useRef(null);
 	const containerRef = useRef(null);
+
+	const { user, logoutUser } = useContext(AuthContext);
 
 	const toggleNav = () => {
 		setOpenNavbar(!openNavbar);
@@ -35,6 +41,38 @@ const Navbar = () => {
 			window.removeEventListener('scroll', scrollHandler);
 		};
 	}, []);
+
+	function connected() {
+		if (user) {
+			return (
+				<NavItem className="flex items-center justify-center py-6 lg:pl-5 lg:py-0">
+					<NavItem>
+						<NavBarLink to="/monespace"><Button secondary className="mr-4">
+							Mon espace
+						</Button></NavBarLink>
+					</NavItem>
+					<NavItem>
+						<NavBarLink ><Button onClick={logoutUser} > Deconnecter</Button></NavBarLink>
+					</NavItem>
+
+				</NavItem>
+			);
+		} else {
+			return (
+				<NavItem className="flex items-center justify-center py-6 lg:pl-5 lg:py-0">
+					<NavItem>
+						<NavBarLink to="/login"><Button secondary className="mr-4">
+							Se connecter
+						</Button></NavBarLink>
+					</NavItem>
+					<NavItem>
+						<NavBarLink to="/signup"><Button to="/signup">Rejoindre</Button></NavBarLink>
+					</NavItem>
+
+				</NavItem >
+			);
+		}
+	}
 
 	return (
 		<header ref={navRef} className="fixed z-10 w-full h-24 bg-white">
@@ -66,17 +104,14 @@ const Navbar = () => {
 						<NavItem>
 							<NavBarLink to="/#apropos">A propos</NavBarLink>
 						</NavItem>
-						<NavItem className="flex items-center justify-center py-6 lg:pl-5 lg:py-0">
-							<Button secondary className="mr-4">
-								Se connecter
-							</Button>
-							<Button>Rejoindre</Button>
-						</NavItem>
+
+						{connected()}
+
 					</ul>
 				</nav>
 				<NavToggler openNavbar={openNavbar} toggleNav={toggleNav} />
 			</div>
-		</header>
+		</header >
 	);
 };
 

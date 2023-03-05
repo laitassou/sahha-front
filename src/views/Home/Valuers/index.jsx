@@ -5,35 +5,21 @@ import { BodySection } from 'components/common/BodySection';
 
 const valeurs = [
 	{
-		title: 'Valeur 1',
+		title: 'Engagement',
 		text: "Autour de la temathique de famille et dependance et aide à la personner Notre histoire est née d'un besoin familial",
 		Icon: <HeartBeating className="w-16 mb-4" />,
 	},
 	{
-		title: 'Valeur 1',
+		title: 'Qualité',
 		text: "Autour de la temathique de famille et dependance et aide à la personner Notre histoire est née d'un besoin familial",
 		Icon: <SuitCase className="w-16 mb-4" />,
 	},
 	{
-		title: 'Valeur 1',
+		title: 'Suivi',
 		text: "Autour de la temathique de famille et dependance et aide à la personner Notre histoire est née d'un besoin familial",
 		Icon: <Brain className="w-16 mb-4" />,
 	},
-	{
-		title: 'Valeur 1',
-		text: "Autour de la temathique de famille et dependance et aide à la personner Notre histoire est née d'un besoin familial",
-		Icon: <Tools className="w-16 mb-4" />,
-	},
-	{
-		title: 'Valeur 1',
-		text: "Autour de la temathique de famille et dependance et aide à la personner Notre histoire est née d'un besoin familial",
-		Icon: <Brain className="w-16 mb-4" />,
-	},
-	{
-		title: 'Valeur 1',
-		text: "Autour de la temathique de famille et dependance et aide à la personner Notre histoire est née d'un besoin familial",
-		Icon: <HeartBeating className="w-16 mb-4" />,
-	},
+
 ];
 
 const Valeurs = () => {
