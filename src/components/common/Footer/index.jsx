@@ -1,14 +1,19 @@
-import React from 'react';
 import { NavLink } from 'react-router-dom';
 import FooterLink from './FooterLink';
 import FooterLinksList from './FooterLinksList';
 
 const Footer = () => {
 	return (
-		<footer className="pt-10 text-white border-t bg-slate-900">
+		<footer className="pt-10 mt-20 text-white border-t bg-slate-900">
 			<div className="container flex flex-wrap justify-between pb-10 md:flex-row lg:px-20">
 				<div className="flex flex-col">
-					<NavLink to="/">
+					<NavLink
+						to="/"
+						onClick={() => {
+							window.scrollTo(0, 0);
+							return false;
+						}}
+					>
 						<img alt="" src="assets/logo-004.png" />
 					</NavLink>
 					<p className="max-w-xs mt-3">
