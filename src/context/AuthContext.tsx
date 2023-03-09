@@ -1,12 +1,62 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect, FC, PropsWithChildren } from 'react';
 import { useHistory } from 'react-router-dom';
-import jwt_decode from 'jwt-decode';
 
-const AuthContext = createContext();
+export interface User {
+	first_name: string;
+	last_name: string;
+	username: string;
+	email: string;
+	role: string;
+	phone_number?: string;
+}
+
+export interface AuthToken {
+	access: string;
+	refresh: string;
+}
+
+interface AuthContextProps {
+	user?: User;
+	authTokens?: AuthToken;
+	loginUser: (email: string, password: string) => Promise<void>;
+	registerUser: (
+		first_name: string,
+		last_name: string,
+		email: string,
+		role: string,
+		password: string,
+		confirm_password: string,
+		phone_number?: string,
+	) => Promise<void>;
+	logoutUser: () => void;
+	publishAnnonce: (title: string, description: string) => Promise<void>;
+	list_annonces: () => Promise<void>;
+	publishSlots: (annonce_id: number, description: string, start_time: number, end_time: number) => Promise<void>;
+	setAuthTokens: React.Dispatch<any>;
+	setUser: React.Dispatch<any>;
+}
+
+const AuthContext = createContext<AuthContextProps>({
+	loginUser: async () => {},
+	registerUser: async () => {},
+	logoutUser: async () => {},
+	publishAnnonce: async () => {},
+	list_annonces: async () => {},
+	publishSlots: async () => {},
+	setAuthTokens: () => {},
+	setUser: () => {},
+});
 
 export default AuthContext;
 
-export const AuthProvider = ({ children }) => {
+export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
+	const [loading, setLoading] = useState(true);
+	const [user, setUser] = useState(() => {
+		const storedToken = localStorage.getItem('authTokens');
+		if (storedToken) return JSON.parse(storedToken);
+		else return null;
+	});
+
 	const [authTokens, setAuthTokens] = useState(() => {
 		try {
 			const storedToken = localStorage.getItem('authTokens');
@@ -18,17 +68,9 @@ export const AuthProvider = ({ children }) => {
 		}
 	});
 
-	const [user, setUser] = useState(() => {
-		const storedToken = localStorage.getItem('authTokens');
-		if (storedToken) return JSON.parse(localStorage.getItem('authTokens'));
-		else return null;
-	});
+	const history = useHistory();
 
-	const [loading, setLoading] = useState(true);
-
-	const history = useHistory({});
-
-	const loginUser = async (email, password) => {
+	const loginUser = async (email: string, password: string) => {
 		const response = await fetch('http://127.0.0.1:8000/api/user/login/', {
 			method: 'POST',
 			headers: {
@@ -51,7 +93,15 @@ export const AuthProvider = ({ children }) => {
 		}
 	};
 
-	const registerUser = async (first_name, last_name, email, role, password, confirm_password, phone_number) => {
+	const registerUser = async (
+		first_name: string,
+		last_name: string,
+		email: string,
+		role: string,
+		password: string,
+		confirm_password: string,
+		phone_number?: string,
+	) => {
 		console.log('paswwords', password, confirm_password);
 		const response = await fetch('http://127.0.0.1:8000/api/user/signup/', {
 			method: 'POST',
@@ -85,8 +135,11 @@ export const AuthProvider = ({ children }) => {
 		history.push('/');
 	};
 
-	const publishAnnonce = async (title, description) => {
+	const publishAnnonce = async (title: string, description: string) => {
 		const auth = localStorage.getItem('authTokens');
+		if (!auth) {
+			return;
+		}
 		console.log('auth_token:', auth, typeof auth);
 		const auth_json = JSON.parse(auth);
 		const json_auth_token = auth_json.token;
@@ -114,6 +167,9 @@ export const AuthProvider = ({ children }) => {
 
 	const list_annonces = async () => {
 		const auth = localStorage.getItem('authTokens');
+		if (!auth) {
+			return;
+		}
 		const auth_json = JSON.parse(auth);
 		const json_auth_token = auth_json.token;
 		const response = await fetch('http://127.0.0.1:8000/api/annonce/', {
@@ -133,8 +189,11 @@ export const AuthProvider = ({ children }) => {
 		}
 	};
 
-	const publishSlots = async (annonce_id, description, start_time, end_time) => {
+	const publishSlots = async (annonce_id: number, description: string, start_time: number, end_time: number) => {
 		const auth = localStorage.getItem('authTokens');
+		if (!auth) {
+			return;
+		}
 		const auth_json = JSON.parse(auth);
 		const json_auth_token = auth_json.token;
 		console.log('auth_token:', json_auth_token);
@@ -175,7 +234,7 @@ export const AuthProvider = ({ children }) => {
 
 	useEffect(() => {
 		if (authTokens) {
-			setUser((authTokens.token));
+			setUser(authTokens.token);
 		}
 		setLoading(false);
 	}, [authTokens, loading]);

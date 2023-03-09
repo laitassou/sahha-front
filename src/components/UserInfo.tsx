@@ -1,9 +1,8 @@
+import { User } from 'context/AuthContext';
 import { FC } from 'react';
 
 interface Props {
-	user: {
-		username: string;
-	};
+	user: User;
 }
 export const UserInfo: FC<Props> = ({ user }) => {
 	return (
