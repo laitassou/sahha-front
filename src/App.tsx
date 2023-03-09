@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, useLocation } from 'react-router-dom';
 import Home from './views/Home';
 import Navbar from './components/common/Navbar';
 import clsx from 'clsx';
@@ -10,6 +10,7 @@ import SingleAnnonce from './components/SingleAnnonce';
 import LoginPage from './components/LoginPage';
 import Signup from './components/Signup';
 import { Annonces } from 'components/Annonces';
+import { Login } from 'views/Login';
 
 function App() {
 	return (
@@ -24,6 +25,7 @@ function App() {
 					<Switch>
 						<Route component={Home} path="/" exact />
 						<Route component={LoginPage} path="/login" />
+						<Route component={Login} path="/login_new" />
 						<Route component={Signup} path="/signup" />
 						<Route component={ProtectedPage} path="/monespace" />
 						<Route component={Annonces} path="/annonces" />
