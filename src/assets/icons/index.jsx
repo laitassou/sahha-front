@@ -10,3 +10,4 @@ export { ReactComponent as Hospitalisation } from './hospatilisation.svg';
 export { ReactComponent as Kinésitherapie } from './kinésitherapie.svg';
 export { ReactComponent as Sang } from './sang.svg';
 export { ReactComponent as Accompagnement } from './accompagnement.svg';
+export { ReactComponent as Location } from './location.svg';
