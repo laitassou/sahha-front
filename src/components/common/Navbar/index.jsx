@@ -45,33 +45,25 @@ const Navbar = () => {
 		if (user) {
 			return (
 				<NavItem className="flex items-center justify-center py-6 lg:pl-5 lg:py-0">
-					<NavItem>
-						<NavBarLink to="/monespace">
-							<Button secondary className="mr-4">
-								Mon espace
-							</Button>
-						</NavBarLink>
-					</NavItem>
-					<NavItem>
-						<Link onClick={logoutUser}>Deconnecter</Link>
-					</NavItem>
+					<NavLink to="/monespace">
+						<Button className="mr-4">Mon espace</Button>
+					</NavLink>
+					<Button secondary onClick={logoutUser}>
+						Deconnecter
+					</Button>
 				</NavItem>
 			);
 		} else {
 			return (
 				<NavItem className="flex items-center justify-center py-6 lg:pl-5 lg:py-0">
-					<NavItem>
-						<NavBarLink to="/login">
-							<Button secondary className="mr-4">
-								Se connecter
-							</Button>
-						</NavBarLink>
-					</NavItem>
-					<NavItem>
-						<NavBarLink to="/signup">
-							<Button to="/signup">Rejoindre</Button>
-						</NavBarLink>
-					</NavItem>
+					<NavLink to="/login">
+						<Button secondary className="mr-4">
+							Se connecter
+						</Button>
+					</NavLink>
+					<NavLink to="/signup">
+						<Button to="/signup">Rejoindre</Button>
+					</NavLink>
 				</NavItem>
 			);
 		}
