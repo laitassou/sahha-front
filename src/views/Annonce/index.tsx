@@ -12,7 +12,6 @@ import { useContext } from 'react';
 import AuthContext from 'context/AuthContext';
 import { Input } from 'components/common/Form/Input';
 import FormError from 'components/common/Form/FormError';
-import { Redirect } from 'react-router-dom';
 
 const initialValues = {
 	title: '',
