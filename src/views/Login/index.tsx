@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import { ZodError, z } from 'zod';
 import AuthLayout from 'components/Layouts/AuthLayout';
 import AuthContext from 'context/AuthContext';
+import FormError from 'components/common/Form/FormError';
 
 const Schema = z.object({
 	username: z.string().min(1, "Nom d'utilisateur requis"),
@@ -42,8 +43,7 @@ const Login: FC = () => {
 			>
 				{({ handleChange, handleBlur, errors, touched, status, isSubmitting }) => (
 					<Form className="flex flex-col items-start">
-						{status && <p className="w-full p-4 mb-6 leading-4 text-white bg-red-500 rounded">{status}</p>}
-
+						<FormError error={status} />
 						<div className="w-full md:w-96">
 							<FormGroup className="mb-4">
 								<FormLabel>Nom d'utilisateur</FormLabel>

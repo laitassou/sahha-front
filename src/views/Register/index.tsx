@@ -9,6 +9,7 @@ import { ZodError, z } from 'zod';
 import AuthLayout from 'components/Layouts/AuthLayout';
 import { SelectField } from 'components/common/Form/SelectField';
 import AuthContext from 'context/AuthContext';
+import FormError from 'components/common/Form/FormError';
 
 type OptionType = {
 	value: string;
@@ -71,9 +72,9 @@ const Register: FC = () => {
 					}
 				}}
 			>
-				{({ handleChange, setFieldValue, handleBlur, errors, touched, status, isSubmitting }) => (
+				{({ handleChange, handleBlur, errors, touched, status, isSubmitting }) => (
 					<Form className="flex flex-col items-start">
-						{status && <p className="w-full p-4 mb-6 leading-4 text-white bg-red-500 rounded">{status}</p>}
+						<FormError error={status} />
 						<div className="flex flex-col lg:flex-row">
 							<div className="flex flex-col w-full mr-6 md:w-96">
 								<FormGroup className="mb-4">
