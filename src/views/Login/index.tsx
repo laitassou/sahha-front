@@ -3,21 +3,24 @@ import { FormGroup } from 'components/common/Form/FormGroup';
 import { FormLabel } from 'components/common/Form/FormLabel';
 import { Input } from 'components/common/Form/Input';
 import { Form, Formik } from 'formik';
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { ZodError, z } from 'zod';
 import AuthLayout from 'components/Layouts/AuthLayout';
+import AuthContext from 'context/AuthContext';
 
 const Schema = z.object({
-	email: z.string().email('E-mail est invalid'),
-	password: z.string().min(1, 'Mot de passe invalid'),
+	username: z.string().min(1, "Nom d'utilisateur requis"),
+	password: z.string().min(1, 'Mot de passe requis'),
 });
 const initialValues = {
-	email: '',
+	username: '',
 	password: '',
 };
 
 const Login: FC = () => {
+	const { loginUser } = useContext(AuthContext);
+
 	return (
 		<AuthLayout title="Bienvenue" paragraph="Connectez vous et accedez à votre espace">
 			<Formik
@@ -29,22 +32,28 @@ const Login: FC = () => {
 					}
 				}}
 				initialValues={initialValues}
-				onSubmit={(values) => {
-					console.log(values);
+				onSubmit={async ({ username, password }, actions) => {
+					try {
+						await loginUser(username, password);
+					} catch (err) {
+						actions.setStatus((err as Error).message);
+					}
 				}}
 			>
-				{({ handleChange, handleBlur, errors, touched }) => (
+				{({ handleChange, handleBlur, errors, touched, status, isSubmitting }) => (
 					<Form className="flex flex-col items-start">
+						{status && <p className="w-full p-4 mb-6 leading-4 text-white bg-red-500 rounded">{status}</p>}
+
 						<div className="w-full md:w-96">
 							<FormGroup className="mb-4">
-								<FormLabel>Email</FormLabel>
+								<FormLabel>Nom d'utilisateur</FormLabel>
 								<Input
-									error={touched.email ? errors.email : ''}
+									error={touched.username ? errors.username : ''}
 									onChange={handleChange}
 									onBlur={handleBlur}
-									placeholder="Votre email"
-									type="email"
-									name="email"
+									placeholder="Votre Nom d'utilisateur"
+									type="text"
+									name="username"
 									autoFocus
 								/>
 							</FormGroup>
@@ -60,7 +69,7 @@ const Login: FC = () => {
 									name="password"
 								/>
 							</FormGroup>
-							<Button type="submit" className="mt-4 mb-6">
+							<Button type="submit" className="mt-4 mb-6" isLoading={isSubmitting}>
 								Se connecter
 							</Button>
 							<p>
