@@ -3,11 +3,12 @@ import { FormGroup } from 'components/common/Form/FormGroup';
 import { FormLabel } from 'components/common/Form/FormLabel';
 import { Input } from 'components/common/Form/Input';
 import { Form, Formik } from 'formik';
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { ZodError, z } from 'zod';
 import AuthLayout from 'components/Layouts/AuthLayout';
 import { SelectField } from 'components/common/Form/SelectField';
+import AuthContext from 'context/AuthContext';
 
 type OptionType = {
 	value: string;
@@ -48,6 +49,8 @@ const Schema = z
 	});
 
 const Register: FC = () => {
+	const { registerUser } = useContext(AuthContext);
+
 	return (
 		<AuthLayout title="Créer un compte" paragraph="Créez votre compte complètement gratuit">
 			<Formik
@@ -59,12 +62,18 @@ const Register: FC = () => {
 					}
 				}}
 				initialValues={initialValues}
-				onSubmit={(values) => {
-					console.log(values);
+				onSubmit={async (values, actions) => {
+					const { first_name, last_name, email, role, password, password_confirmation } = values;
+					try {
+						await registerUser(first_name, last_name, email, role, password, password_confirmation);
+					} catch (err) {
+						actions.setStatus((err as Error).message);
+					}
 				}}
 			>
-				{({ handleChange, setFieldValue, handleBlur, errors, touched }) => (
+				{({ handleChange, setFieldValue, handleBlur, errors, touched, status, isSubmitting }) => (
 					<Form className="flex flex-col items-start">
+						{status && <p className="w-full p-4 mb-6 leading-4 text-white bg-red-500 rounded">{status}</p>}
 						<div className="flex flex-col lg:flex-row">
 							<div className="flex flex-col w-full mr-6 md:w-96">
 								<FormGroup className="mb-4">
@@ -130,7 +139,7 @@ const Register: FC = () => {
 								</FormGroup>
 							</div>
 						</div>
-						<Button type="submit" className="mt-4 mb-6">
+						<Button type="submit" className="mt-4 mb-6" isLoading={isSubmitting}>
 							Se connecter
 						</Button>
 						<p>
