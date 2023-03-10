@@ -10,6 +10,8 @@ import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop';
 // Storybook cannot alias this, so you would use 'react-big-calendar/lib/addons/dragAndDrop/styles.scss'
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.scss';
 
+import { Link } from 'react-router-dom';
+
 import InputBox from './InputBox';
 import AuthContext from '../context/AuthContext';
 
@@ -110,13 +112,13 @@ export default function DnDOutsideResource({ localizer, data }) {
 
 	/*
   const handleSelectSlot = useCallback(
-    ({ start, end }) => {
-      const title = window.prompt('Nom du creneau')
-      if (title) {
-        setEvents((prev) => [...prev, { start, end, title }])
-      }
-    },
-    [setEvents]
+	({ start, end }) => {
+	  const title = window.prompt('Nom du creneau')
+	  if (title) {
+		setEvents((prev) => [...prev, { start, end, title }])
+	  }
+	},
+	[setEvents]
   )
 */
 	const newEvent = useCallback(
@@ -192,15 +194,14 @@ export default function DnDOutsideResource({ localizer, data }) {
 					<div className="inner">
 						<div className="login_form form_box">
 							<form onSubmit={handleSubmit}>
-								<InputBox class="submit_btn" type="submit" value="Engreistrer" />
+								<Link class="submit_btn" onClick={handleSubmit} value="Engreistrer" >Engreistrer</Link>
 							</form>
 						</div>
 					</div>
 
 					<div>
 						<label>
-							<input type="checkbox" checked={displayDragItemInCell} onChange={handleDisplayDragItemInCell} />
-							Display dragged item in cell while dragging over
+							Clickez sur le calendrier pour choisir les creneaux
 						</label>
 					</div>
 				</Card>

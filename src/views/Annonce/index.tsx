@@ -76,7 +76,7 @@ const Annonce = () => {
 									/>
 								</FormGroup>
 								<Button className="mt-6" type="submit" isLoading={isSubmitting}>
-									Publié l'annonce
+									Publier l'annonce
 								</Button>
 							</Form>
 						)}

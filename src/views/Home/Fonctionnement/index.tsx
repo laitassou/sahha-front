@@ -31,7 +31,7 @@ const Fonctionnement = () => {
 						</div>
 					</div>
 					<div className="hidden max-w-xl mt-32 lg:block">
-						<img src="/assets/illustrations/guide.png" alt="Guide PNG" />
+						<img src="/assets/illustrations/guide-img.svg" alt="Guide PNG" />
 					</div>
 				</div>
 			</div>

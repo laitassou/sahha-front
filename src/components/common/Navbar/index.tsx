@@ -79,7 +79,7 @@ const Navbar = () => {
 						return false;
 					}}
 				>
-					<img alt="" src="assets/logo-004.png" />
+					<img alt="" src="assets/logo.svg" />
 				</NavLink>
 				<nav
 					className={clsx(

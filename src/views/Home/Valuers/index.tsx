@@ -1,23 +1,23 @@
 import SectionTitle from 'components/common/SectionTitle';
 import Valeur from './Valeur';
-import { Brain, HeartBeating, SuitCase } from 'assets/icons';
+import { Engagement, Qualite, Suivi, Tools } from 'assets/icons';
 import { BodySection } from 'components/common/BodySection';
 
 const valeurs = [
 	{
 		title: 'Engagement',
-		text: "Autour de la temathique de famille et dependance et aide à la personner Notre histoire est née d'un besoin familial",
-		Icon: <HeartBeating className="w-16 mb-4" />,
+		text: "Nous veillons à rendre votre quotidien plus simple, à aider vos proches. Nous selectionnons des personnes avec des profils étudiés et adaptés",
+		Icon: <Engagement className="w-16 mb-4" />,
 	},
 	{
 		title: 'Qualité',
-		text: "Autour de la temathique de famille et dependance et aide à la personner Notre histoire est née d'un besoin familial",
-		Icon: <SuitCase className="w-16 mb-4" />,
+		text: "Nous assurons un service de qualité et un service adapté a vos besoins. Nous somme à l'écoute pour améliorer nos services",
+		Icon: <Qualite className="w-16 mb-4" />,
 	},
 	{
 		title: 'Suivi',
-		text: "Autour de la temathique de famille et dependance et aide à la personner Notre histoire est née d'un besoin familial",
-		Icon: <Brain className="w-16 mb-4" />,
+		text: "Nous effectuons une prise en charge dès le premier contact, nous etudions avec soin vos besoins et via votre espace nous fournissons un suivi régulier",
+		Icon: <Suivi className="w-16 mb-4" />,
 	},
 ];
 

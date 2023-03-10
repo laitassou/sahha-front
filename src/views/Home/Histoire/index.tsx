@@ -20,7 +20,7 @@ const Histoire = () => {
 				</div>
 
 				<div className="max-w-xs mx-auto mb-6">
-					<img src="/assets/illustrations/about.png" alt="About png" />
+					<img src="/assets/illustrations/histoire-img.svg" alt="About png" />
 				</div>
 				<Button>Rejoignez nous</Button>
 			</div>
