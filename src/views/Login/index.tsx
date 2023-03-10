@@ -76,7 +76,7 @@ const Login: FC = () => {
 							</Button>
 							<p>
 								Pas encore de compte?{' '}
-								<Link className="text-primary-500 hover:underline" to="/register">
+								<Link className="text-primary-500 hover:underline" to="/signup">
 									Créer un compte
 								</Link>
 							</p>

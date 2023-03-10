@@ -24,7 +24,7 @@ function App() {
 					<Switch>
 						<Route component={Home} path="/" exact />
 						<Route component={Login} path="/login" />
-						<Route component={Register} path="/register" />
+						<Route component={Register} path="/signup" />
 						<Route component={ProtectedPage} path="/monespace" />
 						<Route component={Annonce} path="/annonces" />
 						<Route component={ListAnnonces} path="/list-annonces/" exact />
