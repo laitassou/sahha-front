@@ -41,7 +41,7 @@ const Login: FC = () => {
 					}
 				}}
 			>
-				{({ handleChange, handleBlur, errors, touched, status, isSubmitting }) => (
+				{({ handleChange, handleBlur, values, errors, touched, status, isSubmitting }) => (
 					<Form className="flex flex-col items-start">
 						<FormError error={status} />
 						<div className="w-full md:w-96">
@@ -54,6 +54,7 @@ const Login: FC = () => {
 									placeholder="Votre Nom d'utilisateur"
 									type="text"
 									name="username"
+									value={values.username}
 									autoFocus
 								/>
 							</FormGroup>
@@ -66,6 +67,7 @@ const Login: FC = () => {
 									onBlur={handleBlur}
 									placeholder="Votre mot de passe"
 									type="password"
+									value={values.password}
 									name="password"
 								/>
 							</FormGroup>

@@ -25,10 +25,7 @@ const schema = z.object({
 });
 
 const Annonce = () => {
-	const { publishAnnonce, user } = useContext(AuthContext);
-	if (!user) {
-		return <Redirect to="/login" />;
-	}
+	const { publishAnnonce } = useContext(AuthContext);
 	return (
 		<BodySection className="relative">
 			<Vase className="absolute bottom-0 left-0" />

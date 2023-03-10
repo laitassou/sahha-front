@@ -7,9 +7,6 @@ import { AuthProvider } from './context/AuthContext';
 import ProtectedPage from './components/ProtectedPage';
 import ListAnnonces from './components/ListAnnonces';
 import SingleAnnonce from './components/SingleAnnonce';
-import LoginPage from './components/LoginPage';
-import Signup from './components/Signup';
-import { Annonces } from 'components/Annonces';
 import { Login } from 'views/Login';
 import { Register } from 'views/Register';
 import { Annonce } from 'views/Annonce';
@@ -27,7 +24,7 @@ function App() {
 					<Switch>
 						<Route component={Home} path="/" exact />
 						<Route component={Login} path="/login" />
-						<Route component={Register} path="/signup" />
+						<Route component={Register} path="/register" />
 						<Route component={ProtectedPage} path="/monespace" />
 						<Route component={Annonce} path="/annonces" />
 						<Route component={ListAnnonces} path="/list-annonces/" exact />

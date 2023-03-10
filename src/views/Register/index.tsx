@@ -72,7 +72,7 @@ const Register: FC = () => {
 					}
 				}}
 			>
-				{({ handleChange, handleBlur, errors, touched, status, isSubmitting }) => (
+				{({ handleChange, handleBlur, errors, touched, values, status, isSubmitting }) => (
 					<Form className="flex flex-col items-start">
 						<FormError error={status} />
 						<div className="flex flex-col lg:flex-row">
@@ -86,6 +86,7 @@ const Register: FC = () => {
 										placeholder="Votre nom"
 										type="text"
 										name="first_name"
+										value={values.first_name}
 									/>
 								</FormGroup>
 								<FormGroup className="mb-4">
@@ -97,6 +98,7 @@ const Register: FC = () => {
 										placeholder="Votre nom"
 										type="text"
 										name="last_name"
+										value={values.last_name}
 									/>
 								</FormGroup>
 								<FormGroup className="mb-4">
@@ -108,13 +110,19 @@ const Register: FC = () => {
 										placeholder="Votre email"
 										type="email"
 										name="email"
+										value={values.email}
 									/>
 								</FormGroup>
 							</div>
 							<div className="flex flex-col w-full md:w-96">
 								<FormGroup className="mb-4">
 									<FormLabel>Role</FormLabel>
-									<SelectField options={options} name="role" placeholder="Sélectionnez un rôle" />
+									<SelectField
+										value={options.find((option) => values.role === option.value)}
+										options={options}
+										name="role"
+										placeholder="Sélectionnez un rôle"
+									/>
 								</FormGroup>
 								<FormGroup className="mb-4">
 									<FormLabel>Mot de passe</FormLabel>
@@ -125,6 +133,7 @@ const Register: FC = () => {
 										placeholder="Votre mot de passe"
 										type="password"
 										name="password"
+										value={values.password}
 									/>
 								</FormGroup>
 								<FormGroup className="mb-4">
@@ -136,6 +145,7 @@ const Register: FC = () => {
 										placeholder="Confirmer votre mot de passe"
 										type="password"
 										name="password_confirmation"
+										value={values.password_confirmation}
 									/>
 								</FormGroup>
 							</div>
@@ -145,7 +155,7 @@ const Register: FC = () => {
 						</Button>
 						<p>
 							Avez vous deja compte?{' '}
-							<Link className="text-primary-500 hover:underline" to="/login_new">
+							<Link className="text-primary-500 hover:underline" to="/login">
 								Connecter vous
 							</Link>
 						</p>
