@@ -14,7 +14,7 @@ const options: readonly OptionType[] = [
 	//{value: "Supervisor", label:"Superviseur"},
 ];
 
-function Register() {
+function RegisterPage() {
 	const [first_name, setUsername] = useState('');
 	const [last_name, setLastname] = useState('');
 
@@ -103,4 +103,4 @@ function Register() {
 	);
 }
 
-export default Register;
+export default RegisterPage;

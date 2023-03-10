@@ -35,39 +35,41 @@ const Login: FC = () => {
 			>
 				{({ handleChange, handleBlur, errors, touched }) => (
 					<Form className="flex flex-col items-start">
-						<FormGroup className="mb-4">
-							<FormLabel>Email</FormLabel>
-							<Input
-								error={touched.email ? errors.email : ''}
-								onChange={handleChange}
-								onBlur={handleBlur}
-								placeholder="Votre email"
-								type="email"
-								name="email"
-								autoFocus
-							/>
-						</FormGroup>
+						<div className="w-full md:w-96">
+							<FormGroup className="mb-4">
+								<FormLabel>Email</FormLabel>
+								<Input
+									error={touched.email ? errors.email : ''}
+									onChange={handleChange}
+									onBlur={handleBlur}
+									placeholder="Votre email"
+									type="email"
+									name="email"
+									autoFocus
+								/>
+							</FormGroup>
 
-						<FormGroup className="mb-4">
-							<FormLabel>Mot de passe</FormLabel>
-							<Input
-								error={touched.password ? errors.password : ''}
-								onChange={handleChange}
-								onBlur={handleBlur}
-								placeholder="Votre mot de passe"
-								type="password"
-								name="password"
-							/>
-						</FormGroup>
-						<Button type="submit" className="mt-4 mb-6">
-							Se connecter
-						</Button>
-						<p>
-							Pas encore de compte?{' '}
-							<Link className="text-primary-500 hover:underline" to="/register">
-								Créer un compte
-							</Link>
-						</p>
+							<FormGroup className="mb-4">
+								<FormLabel>Mot de passe</FormLabel>
+								<Input
+									error={touched.password ? errors.password : ''}
+									onChange={handleChange}
+									onBlur={handleBlur}
+									placeholder="Votre mot de passe"
+									type="password"
+									name="password"
+								/>
+							</FormGroup>
+							<Button type="submit" className="mt-4 mb-6">
+								Se connecter
+							</Button>
+							<p>
+								Pas encore de compte?{' '}
+								<Link className="text-primary-500 hover:underline" to="/register">
+									Créer un compte
+								</Link>
+							</p>
+						</div>
 					</Form>
 				)}
 			</Formik>

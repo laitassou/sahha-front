@@ -11,6 +11,7 @@ import LoginPage from './components/LoginPage';
 import Signup from './components/Signup';
 import { Annonces } from 'components/Annonces';
 import { Login } from 'views/Login';
+import { Register } from 'views/Register';
 
 function App() {
 	return (
@@ -26,6 +27,7 @@ function App() {
 						<Route component={Home} path="/" exact />
 						<Route component={LoginPage} path="/login" />
 						<Route component={Login} path="/login_new" />
+						<Route component={Register} path="/register" />
 						<Route component={Signup} path="/signup" />
 						<Route component={ProtectedPage} path="/monespace" />
 						<Route component={Annonces} path="/annonces" />
