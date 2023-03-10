@@ -12,6 +12,7 @@ import Signup from './components/Signup';
 import { Annonces } from 'components/Annonces';
 import { Login } from 'views/Login';
 import { Register } from 'views/Register';
+import { Annonce } from 'views/Annonce';
 
 function App() {
 	return (
@@ -25,12 +26,10 @@ function App() {
 				>
 					<Switch>
 						<Route component={Home} path="/" exact />
-						<Route component={LoginPage} path="/login" />
-						<Route component={Login} path="/login_new" />
-						<Route component={Register} path="/register" />
-						<Route component={Signup} path="/signup" />
+						<Route component={Login} path="/login" />
+						<Route component={Register} path="/signup" />
 						<Route component={ProtectedPage} path="/monespace" />
-						<Route component={Annonces} path="/annonces" />
+						<Route component={Annonce} path="/annonces" />
 						<Route component={ListAnnonces} path="/list-annonces/" exact />
 						<Route component={SingleAnnonce} path="/annonce/:id/" exact />
 					</Switch>

@@ -138,7 +138,7 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 	const publishAnnonce = async (title: string, description: string) => {
 		const auth = localStorage.getItem('authTokens');
 		if (!auth) {
-			return;
+			throw new Error('Vous devez être connecté pour publier une annonce');
 		}
 		console.log('auth_token:', auth, typeof auth);
 		const auth_json = JSON.parse(auth);

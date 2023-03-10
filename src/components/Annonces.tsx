@@ -1,6 +1,7 @@
 import { useState, useContext, FC, ChangeEvent, FormEvent } from 'react';
 import InputBox from './InputBox';
 import AuthContext from '../context/AuthContext';
+import { Redirect } from 'react-router-dom';
 
 interface Props {
 	name: string;
@@ -24,9 +25,9 @@ const Annonces: FC<Props> = () => {
 	const handleDesc = (event: ChangeEvent<HTMLTextAreaElement>) => {
 		setDescription(event.target.value);
 	};
-	if (!user) {
-		return null;
-	}
+	// if (!user) {
+	// 	return <Redirect to="/login" />;
+	// }
 	return (
 		<div className="full_height">
 			<div className="container">

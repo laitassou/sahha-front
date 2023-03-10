@@ -20,7 +20,7 @@ function Annonces() {
 		setDescription(event.target.value);
 	};
 	if (!user) {
-		return;
+		return null;
 	}
 	return (
 		<section>
