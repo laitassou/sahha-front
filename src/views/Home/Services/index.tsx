@@ -18,37 +18,31 @@ const Services = () => {
 			<div className="container">
 				<SectionTitle title="Nos Services" className="text-center" />
 				<div className="flex flex-wrap">
-					<ServiceSingle icon={<Compagnie />} title="Compagnie">
-						becare vous offre tous les types d&apos;injections dont vous aurez besoin, assurés par des infirmiers
-						expérimentés
+					<ServiceSingle icon={<Compagnie />} title="Accompagnement">
+						Besoin d'accompagnement, récuperer les enfants à l'école, effectuer des demarches, ...
 					</ServiceSingle>
 					<ServiceSingle icon={<Sonde />} title="Repas">
-						Selon votre cas, votre médecin vous précise le type de sonde dont vous avez besoin, et c&apos;est à becare
-						de vous envoyer le professionnel qui va vous prendre en charge
+						On peut selectionner des aides a domiciles pour vous aider à preparer vos repas.
 					</ServiceSingle>
 					<ServiceSingle icon={<Soins />} title="Soins">
 						Pour tout type de pansements, becare vous envoie des infirmiers compétents qui vont vous prendre en charge à
 						votre domicile
 					</ServiceSingle>
 					<ServiceSingle icon={<Courses />} title="Courses">
-						Si vous avez besoin d&apos;assistance pour vos soins d&apos;hygiène, becare vous propose des aides soignants
-						qui se déplacent chez vous
+						pour faire vos courses, achat divers ou encombrants. nous avons la solution qu'il vous faut.
 					</ServiceSingle>
 					<ServiceSingle icon={<Intimite />} title="Intimité">
-						Ce service est dédié aux personnes qui préfèrent être hospitalisées à leur domicile. Pour bénéficier de tous
-						les soins comme à l&apos;hôpital chez vous, vous devez demander l&apos;accord du médecin
+						Ce service est dédié aux personnes dependantes, une aide à domicile peut venir vous aider a prendre le bain
 					</ServiceSingle>
 					<ServiceSingle icon={<Menage />} title="Ménage">
-						becare est à votre service pour tout type de rééducation, les séances de kiné sont assurées par des
-						professionnels du domaine, ainsi nos infirmiers vous aident à se soigner selon les règles professionnelles.
+						Vous avez besoin d'aide au menage, ponctuel ou regulier. Nous vous trouvons des personnes adaptées.
 					</ServiceSingle>
 					<ServiceSingle icon={<Hopital />} title="Hopital">
-						Votre infirmier(e) becare avec maîtrise et compétence de toute prise de sang se charge de votre prélèvement
-						à domicile, puis il transmet l'échantillon au laboratoire dans les plus brefs délais.
+						Si vous avez besoin d&apos;assistance , sortie d'hopital ou accompagnement à l'hopital.
 					</ServiceSingle>
 					<ServiceSingle icon={<Accompagnement />} title="Sortie">
-						becare vous propose des infirmiers compétents pour votre accompagnement à domicile, vos soins du corps,
-						soins médicaux, administration de médicaments et autres{' '}
+						Ce service est adaptée aux personnes agées ou dependantes, nous proposons des personnes à l 'écoute pour sortie et accompagnement.
+
 					</ServiceSingle>
 				</div>
 			</div>

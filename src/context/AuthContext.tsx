@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect, FC, PropsWithChildren } from 'react';
 import { useHistory } from 'react-router-dom';
+import { Exception } from 'sass';
 
 export interface User {
 	first_name: string;
@@ -37,14 +38,14 @@ interface AuthContextProps {
 }
 
 const AuthContext = createContext<AuthContextProps>({
-	loginUser: async () => {},
-	registerUser: async () => {},
-	logoutUser: async () => {},
-	publishAnnonce: async () => {},
-	list_annonces: async () => {},
-	publishSlots: async () => {},
-	setAuthTokens: () => {},
-	setUser: () => {},
+	loginUser: async () => { },
+	registerUser: async () => { },
+	logoutUser: async () => { },
+	publishAnnonce: async () => { },
+	list_annonces: async () => { },
+	publishSlots: async () => { },
+	setAuthTokens: () => { },
+	setUser: () => { },
 });
 
 export default AuthContext;
@@ -89,7 +90,7 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 			localStorage.setItem('authTokens', JSON.stringify(data));
 			history.push('/monespace');
 		} else {
-			alert('Something went wrong!');
+			throw new Error('Erreur de mot de passe!');
 		}
 	};
 
@@ -124,7 +125,7 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 		if (response.status === 200) {
 			history.push('/login');
 		} else {
-			alert("Erreur d'enregistrement");
+			throw new Error("Erreur d'enregistrement");
 		}
 	};
 
@@ -161,7 +162,7 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 		if (response.status === 200) {
 			history.push('/');
 		} else {
-			alert('Erreur de publication');
+			throw new Error('Erreur de publication');
 		}
 	};
 
@@ -184,8 +185,8 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 		if (response.status === 200) {
 			return data;
 		} else {
-			alert('Erreur de listing');
-			return null;
+			throw new Error('Erreur de listing');
+			//return null;
 		}
 	};
 
@@ -215,7 +216,7 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 		if (response.status === 200) {
 			history.push('/');
 		} else {
-			alert('Erreur de publication');
+			throw new Error('Erreur de reservation de créneaux');
 		}
 	};
 

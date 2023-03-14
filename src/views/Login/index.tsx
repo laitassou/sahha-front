@@ -84,7 +84,7 @@ const Login: FC = () => {
 					</Form>
 				)}
 			</Formik>
-		</AuthLayout>
+		</AuthLayout >
 	);
 };
 

@@ -11,6 +11,7 @@ import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop';
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.scss';
 
 import { Link } from 'react-router-dom';
+import Button from 'components/common/Button';
 
 import InputBox from './InputBox';
 import AuthContext from '../context/AuthContext';
@@ -23,9 +24,18 @@ var id_from_db = 0;
 
 const formatName = (name, count) => `${name} ID ${count}`;
 
+//create your forceUpdate hook
+function useForceUpdate() {
+	const [value, setValue] = useState(0); // integer state
+	return () => setValue(value => value + 1); // update state to force render
+	// A function that increment 👆🏻 the previous state like here 
+	// is better than directly setting `setValue(value + 1)`
+}
+
+
 export default function DnDOutsideResource({ localizer, data }) {
 	var annonce_id = 0;
-
+	const forceUpdate = useForceUpdate();
 	var i = 0;
 	while (i < data.length) {
 		const el = data[i];
@@ -193,8 +203,12 @@ export default function DnDOutsideResource({ localizer, data }) {
 				<Card className="dndOutsideSourceExample">
 					<div className="inner">
 						<div className="login_form form_box">
+
 							<form onSubmit={handleSubmit}>
-								<Link class="submit_btn" onClick={handleSubmit} value="Engreistrer" >Engreistrer</Link>
+								<Button type="submit" onClick={handleSubmit} className="mt-4 mb-6" >
+									Enregister les nouveaux creneaux
+								</Button>
+
 							</form>
 						</div>
 					</div>

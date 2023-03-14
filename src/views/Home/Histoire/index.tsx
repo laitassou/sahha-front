@@ -9,13 +9,11 @@ const Histoire = () => {
 				<SectionTitle title="Notre histoire" className="lg:items-center" />
 				<div className="max-w-2xl mx-auto mb-10 text-lg">
 					<p>
-						Autour de la temathique de famille et dependance et aide à la personner Notre histoire est née d'un besoin
+						Autour de la thematique de la famille et dependance et aide à la personne, Notre histoire est née d'un besoin
 						familial.
 					</p>
 					<p className="mt-4">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae illo nobis aperiam, consequuntur quasi
-						architecto, dignissimos minus porro maxime mollitia laboriosam quis similique voluptatum suscipit quibusdam
-						eveniet corporis sit! Repellat?
+						Nos proposons des services ponctuels ou reguliers et nous nous adaptons à vos besoins
 					</p>
 				</div>
 

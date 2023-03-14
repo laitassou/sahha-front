@@ -3,10 +3,10 @@ import Step from './Step';
 import { BodySection } from 'components/common/BodySection';
 
 const steps = [
-	'Notre agence prend contact avec vous pour évaluer vos besoins',
-	'Nous vous proposon et choisir des profils adaptés, pévoir et valider un planning avec vous',
-	'Prévoir et valider un planning avec vous',
-	'Suivi des intreventions dans votre espace',
+	'Notre agence prend contact avec vous pour évaluer vos besoins.',
+	'Nous vous proposon et selectionnons des profils adaptés.',
+	'Nous validons ensemble un planning.',
+	'Vous pouvez suivre le déroulement dans votre espace',
 ];
 const Fonctionnement = () => {
 	return (

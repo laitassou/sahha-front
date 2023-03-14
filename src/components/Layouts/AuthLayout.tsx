@@ -18,7 +18,7 @@ const AuthLayout: FC<PropsWithChildren<Props>> = ({ title, paragraph, children }
 			<div className="container relative">
 				<Portrait className="absolute top-0 left-0" />
 				<RedVase className="absolute right-0 top-24" />
-				<Doctor className="absolute right-10 top-1/2" />
+
 				<div className="box-content relative flex flex-col p-8 mx-auto bg-white border shadow-xl md:p-10 border-primary-500/10 rounded-xl w-fit">
 					<h3 className="mb-4 text-4xl font-extrabold">{title}</h3>
 					<p className="mb-8 text-xl">{paragraph}</p>

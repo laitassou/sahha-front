@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import AuthContext from '../context/AuthContext';
 import { Link } from 'react-router-dom';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+import SectionTitle from 'components/common/SectionTitle';
 
 import { useParams } from 'react-router-dom';
 import { momentLocalizer } from 'react-big-calendar';
@@ -10,14 +11,15 @@ import Selectable from './Calendar';
 require('moment/locale/fr.js');
 const localizer = momentLocalizer(moment);
 
-interface Annonce {
+interface slots {
 	id: number;
+	annonce_id: number;
 	title: string;
 	description: string;
 }
 
 const SingleAnnonce = () => {
-	let [annonce, setAnnonceData] = useState<Annonce>();
+	let [slots, setSlotsData] = useState<slots[]>([]);
 	const auth = localStorage.getItem('authTokens') as string;
 
 
@@ -37,7 +39,7 @@ const SingleAnnonce = () => {
 			},
 		});
 		let data = await response.json();
-		setAnnonceData(data);
+		setSlotsData(data);
 	};
 
 
@@ -48,22 +50,22 @@ const SingleAnnonce = () => {
 	if (!user) {
 		return null;
 	}
+
+
+
 	return (
 		<div className="">
 			<div className="container">
 				<div className="connect_box announce_box"></div>
-				<Link to="/list-annonces">Retour aux annonces</Link>
+				<Link to="/list-annonces"><SectionTitle title="Retour aux annonces" className="text-center" /></Link>
 
 				<div className="container">
 					<div className="announce_box">
 						<h2>Details de votre annonce</h2>
-						{annonce && (
+						{(
 							<>
-								<div className="form_box">
-									<h3>{annonce.title} </h3>
-									{annonce.description}
-								</div>
-								<Selectable localizer={localizer} data={annonce} />
+
+								<Selectable localizer={localizer} data={slots} />
 							</>
 						)}
 					</div>

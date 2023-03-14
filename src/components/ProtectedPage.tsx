@@ -7,7 +7,7 @@ const ProtectedPage = () => {
 	function Client() {
 		return (
 			<>
-				<Link to="/annonces">Publier votre annonces</Link> <br />
+				<Link to="/annonces"><h1>Publier votre annonces </h1></Link> <br />
 				<Link to="/list-annonces">Voir vos annonces</Link> <br />
 			</>
 		);
