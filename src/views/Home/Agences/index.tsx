@@ -4,12 +4,12 @@ import { BodySection } from 'components/common/BodySection';
 
 const agencies = [
 	{
-		name: 'Agence 1',
-		city: 'Agadir',
-		address: 'NR B 71 LOT WIFAQ BENSERGAO AGADIR',
+		name: 'Agence AL KHAIR',
+		city: 'Sala al jadida',
+		address: 'REsidence Al khair sala al jadida',
 	},
 	{
-		name: 'Agence 2',
+		name: 'Agence AL FARAH',
 		city: 'Agadir',
 		address: 'NR B 71 LOT WIFAQ BENSERGAO AGADIR',
 	},

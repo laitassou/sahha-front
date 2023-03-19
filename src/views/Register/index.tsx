@@ -16,8 +16,8 @@ type OptionType = {
 	label: string;
 };
 const options: readonly OptionType[] = [
-	{ value: 'Worker', label: 'Aide à domicile' },
-	{ value: 'Client', label: 'Client' },
+	{ value: 'Client', label: 'Mandataire' },
+	{ value: 'Worker', label: 'Prestataire' },
 ] as const;
 
 type Role = (typeof options)[number]['value'];
@@ -31,18 +31,20 @@ const initialValues = {
 	email: '',
 	password: '',
 	password_confirmation: '',
+	phone_number: '',
 };
 
 const Schema = z
 	.object({
-		email: z.string().email('E-mail est invalid'),
+		email: z.string().email('E-mail est invalide'),
 		first_name: z.string().min(1, 'Prenom est requis'),
 		last_name: z.string().min(1, 'Nom est requis'),
 		role: z.enum(roleEnums, {
-			errorMap: () => ({ message: 'Role selectionner invalid' }),
+			errorMap: () => ({ message: 'Role selectionner invalide' }),
 		}),
 		password: z.string().min(1, 'Mot de passe invalid'),
-		password_confirmation: z.string().min(1, 'Confirmation est invalid'),
+		password_confirmation: z.string().min(1, 'Confirmation est invalide'),
+		phone_number: z.string().min(8, 'Numero de tel court').max(12, 'Numero de tel long'),
 	})
 	.refine((data) => data.password === data.password_confirmation, {
 		message: 'Le mot de passe ne correspond pas',
@@ -64,9 +66,9 @@ const Register: FC = () => {
 				}}
 				initialValues={initialValues}
 				onSubmit={async (values, actions) => {
-					const { first_name, last_name, email, role, password, password_confirmation } = values;
+					const { first_name, last_name, email, role, password, password_confirmation, phone_number } = values;
 					try {
-						await registerUser(first_name, last_name, email, role, password, password_confirmation);
+						await registerUser(first_name, last_name, email, role, password, password_confirmation, phone_number);
 					} catch (err) {
 						actions.setStatus((err as Error).message);
 					}
@@ -113,6 +115,18 @@ const Register: FC = () => {
 										value={values.email}
 									/>
 								</FormGroup>
+								<FormGroup className="mb-4">
+									<FormLabel>Telephone</FormLabel>
+									<Input
+										error={touched.phone_number ? errors.phone_number : ''}
+										onChange={handleChange}
+										onBlur={handleBlur}
+										placeholder="Numero de telephone"
+										type="phone_number"
+										name="phone_number"
+										value={values.phone_number}
+									/>
+								</FormGroup>
 							</div>
 							<div className="flex flex-col w-full md:w-96">
 								<FormGroup className="mb-4">
@@ -151,7 +165,7 @@ const Register: FC = () => {
 							</div>
 						</div>
 						<Button type="submit" className="mt-4 mb-6" isLoading={isSubmitting}>
-							Se connecter
+							S'inscrire
 						</Button>
 						<p>
 							Avez vous deja compte?{' '}

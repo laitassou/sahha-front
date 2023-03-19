@@ -25,8 +25,7 @@ const Services = () => {
 						On peut selectionner des aides a domiciles pour vous aider à preparer vos repas.
 					</ServiceSingle>
 					<ServiceSingle icon={<Soins />} title="Soins">
-						Pour tout type de pansements, becare vous envoie des infirmiers compétents qui vont vous prendre en charge à
-						votre domicile
+						Chercher ses medicaments en pharmacie, une prise de sang, ...
 					</ServiceSingle>
 					<ServiceSingle icon={<Courses />} title="Courses">
 						pour faire vos courses, achat divers ou encombrants. nous avons la solution qu'il vous faut.

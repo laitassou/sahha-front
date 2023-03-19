@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import SectionTitle from 'components/common/SectionTitle';
 
+import MAIN_URL from 'utils/constants';
+
 import { useParams } from 'react-router-dom';
 import { momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
@@ -30,7 +32,7 @@ const SingleAnnonce = () => {
 	const { id } = useParams<{ id: string }>();
 
 	let getSingleAnnonce = async () => {
-		let url = 'http://127.0.0.1:8000/api/slots/' + id + '/';
+		let url = MAIN_URL + '/slots/' + id + '/';
 		console.log('url:' + url);
 		let response = await fetch(url, {
 			headers: {

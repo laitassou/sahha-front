@@ -45,7 +45,11 @@ const Navbar = () => {
 		if (user) {
 			return (
 				<NavItem className="flex items-center justify-center py-6 lg:pl-5 lg:py-0">
-					<NavLink to="/monespace">
+					<NavLink to="/monespace"
+						onClick={() => {
+							window.scrollTo(0, 0);
+							return false;
+						}}>
 						<Button className="mr-4">Mon espace</Button>
 					</NavLink>
 					<Button secondary onClick={logoutUser}>
@@ -61,7 +65,11 @@ const Navbar = () => {
 							Se connecter
 						</Button>
 					</NavLink>
-					<NavLink to="/signup">
+					<NavLink to="/signup"
+						onClick={() => {
+							window.scrollTo(0, 0);
+							return false;
+						}}>
 						<Button>Rejoindre</Button>
 					</NavLink>
 				</NavItem>

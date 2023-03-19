@@ -2,6 +2,8 @@ import { createContext, useState, useEffect, FC, PropsWithChildren } from 'react
 import { useHistory } from 'react-router-dom';
 import { Exception } from 'sass';
 
+import MAIN_URL from 'utils/constants';
+
 export interface User {
 	first_name: string;
 	last_name: string;
@@ -65,14 +67,13 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 			else return null;
 		} catch (e) {
 			localStorage.clear(); //what you need to do incase the jwt is not valid
-			console.log(e); //for your own debugging
 		}
 	});
 
 	const history = useHistory();
 
 	const loginUser = async (email: string, password: string) => {
-		const response = await fetch('http://127.0.0.1:8000/api/user/login/', {
+		const response = await fetch(MAIN_URL + '/user/login/', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -103,8 +104,7 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 		confirm_password: string,
 		phone_number?: string,
 	) => {
-		console.log('paswwords', password, confirm_password);
-		const response = await fetch('http://127.0.0.1:8000/api/user/signup/', {
+		const response = await fetch(MAIN_URL + '/user/signup/', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -141,11 +141,9 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 		if (!auth) {
 			throw new Error('Vous devez être connecté pour publier une annonce');
 		}
-		console.log('auth_token:', auth, typeof auth);
 		const auth_json = JSON.parse(auth);
 		const json_auth_token = auth_json.token;
-		console.log('auth_token:', json_auth_token);
-		const response = await fetch('http://127.0.0.1:8000/api/annonces/', {
+		const response = await fetch(MAIN_URL + '/annonces/', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -173,7 +171,7 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 		}
 		const auth_json = JSON.parse(auth);
 		const json_auth_token = auth_json.token;
-		const response = await fetch('http://127.0.0.1:8000/api/annonce/', {
+		const response = await fetch(MAIN_URL + '/annonce/', {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
@@ -197,8 +195,7 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 		}
 		const auth_json = JSON.parse(auth);
 		const json_auth_token = auth_json.token;
-		console.log('auth_token:', json_auth_token);
-		const response = await fetch('http://127.0.0.1:8000/api/slots/' + annonce_id + '/', {
+		const response = await fetch(MAIN_URL + '/slots/' + annonce_id + '/', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
