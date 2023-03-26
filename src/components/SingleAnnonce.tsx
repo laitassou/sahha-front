@@ -67,7 +67,7 @@ const SingleAnnonce = () => {
 						{(
 							<>
 
-								<Selectable localizer={localizer} data={slots} />
+								<Selectable localizer={localizer} data={slots} anonceid={id} />
 							</>
 						)}
 					</div>

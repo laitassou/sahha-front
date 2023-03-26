@@ -33,8 +33,8 @@ function useForceUpdate() {
 }
 
 
-export default function DnDOutsideResource({ localizer, data }) {
-	var annonce_id = 0;
+export default function DnDOutsideResource({ localizer, data, anonceid }) {
+	var annonce_id = anonceid;
 	const forceUpdate = useForceUpdate();
 	var i = 0;
 	while (i < data.length) {
@@ -237,6 +237,7 @@ export default function DnDOutsideResource({ localizer, data }) {
 					onEventResize={resizeEvent}
 					onSelectSlot={newEvent}
 					data={data}
+					anonceid={anonceid}
 					resizable
 					selectable
 				/>
