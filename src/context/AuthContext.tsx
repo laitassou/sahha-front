@@ -27,6 +27,7 @@ interface AuthContextProps {
 		last_name: string,
 		email: string,
 		role: string,
+		agence: string,
 		password: string,
 		confirm_password: string,
 		phone_number?: string,
@@ -91,7 +92,7 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 			localStorage.setItem('authTokens', JSON.stringify(data));
 			history.push('/monespace');
 		} else {
-			throw new Error('Erreur de mot de passe!');
+			throw new Error(data.error);
 		}
 	};
 
@@ -100,6 +101,7 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 		last_name: string,
 		email: string,
 		role: string,
+		agence_id: string,
 		password: string,
 		confirm_password: string,
 		phone_number?: string,
@@ -114,6 +116,7 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 				last_name,
 				email,
 				role,
+				agence_id,
 				password,
 				confirm_password,
 				phone_number,

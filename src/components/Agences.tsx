@@ -6,7 +6,7 @@ interface AgencesResponse {
 	address: string;
 }
 
-const Agences = () => {
+function Agences() {
 	let [agences, setAgencesData] = useState<AgencesResponse[]>([]);
 	let getAgences = async () => {
 		let response = await fetch('http://127.0.0.1:8000/api/agences/', {
