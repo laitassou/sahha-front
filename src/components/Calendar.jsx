@@ -18,7 +18,7 @@ import AuthContext from '../context/AuthContext';
 
 const DragAndDropCalendar = withDragAndDrop(Calendar);
 
-var events = [];
+//var events = [];
 
 var id_from_db = 0;
 
@@ -35,6 +35,7 @@ function useForceUpdate() {
 
 export default function DnDOutsideResource({ localizer, data, anonceid }) {
 	var annonce_id = anonceid;
+	var events = [];
 	const forceUpdate = useForceUpdate();
 	var i = 0;
 	while (i < data.length) {
@@ -46,6 +47,7 @@ export default function DnDOutsideResource({ localizer, data, anonceid }) {
 			title: el.description,
 			start: new Date(el.start_time),
 			end: new Date(el.end_time),
+			from_base: true,
 			isDraggable: false,
 		};
 		if (
@@ -66,6 +68,11 @@ export default function DnDOutsideResource({ localizer, data, anonceid }) {
 		isDraggable: false,
 	}));
 	const [myEvents, setMyEvents] = useState(adjEvents);
+
+	if (adjEvents.length > 0 && myEvents.length == 0) {
+		setMyEvents(adjEvents);
+	}
+	//myEvents = setMyEvents(adjEvents);
 
 	const { user, logoutUser } = useContext(AuthContext);
 
@@ -138,7 +145,7 @@ export default function DnDOutsideResource({ localizer, data, anonceid }) {
 				const newId = Math.max(...idList) + id_from_db + 1;
 				const title = window.prompt('Nom du creneau');
 				if (title) {
-					return [...prev, { ...event, title, id: newId, isDraggable: true }];
+					return [...prev, { ...event, title, id: newId, isDraggable: true, from_base: false }];
 				} else {
 					return [...prev];
 				}
@@ -190,7 +197,9 @@ export default function DnDOutsideResource({ localizer, data, anonceid }) {
 		var i = 0;
 		while (i < myEvents.length) {
 			console.log('ev:' + myEvents[i].title + myEvents[i].start + myEvents[i].end);
-			publishSlots(annonce_id, myEvents[i].title, myEvents[i].start, myEvents[i].end);
+			if (myEvents[i].from_base === false) {
+				publishSlots(annonce_id, myEvents[i].title, myEvents[i].start, myEvents[i].end);
+			}
 			i++;
 		}
 	};
@@ -242,7 +251,7 @@ export default function DnDOutsideResource({ localizer, data, anonceid }) {
 					selectable
 				/>
 			</div>
-		</Fragment>
+		</Fragment >
 	);
 }
 DnDOutsideResource.propTypes = {
