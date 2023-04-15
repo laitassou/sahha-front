@@ -160,8 +160,8 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 		//response.header("Access-Control-Allow-Origin", "*");
 		//response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
-		if (response.status === 200) {
-			history.push('/');
+		if (response.status === 201) {
+			history.push('/list-annonces');
 		} else {
 			throw new Error('Erreur de publication');
 		}

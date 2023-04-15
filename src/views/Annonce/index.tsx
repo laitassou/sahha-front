@@ -60,7 +60,7 @@ const Annonce = () => {
 										onChange={handleChange}
 										onBlur={handleBlur}
 										value={values.title}
-										placeholder="Titre de l'annonce"
+										placeholder="Titre d'annonce"
 									/>
 								</FormGroup>
 								<FormGroup>
