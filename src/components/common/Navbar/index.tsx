@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import NavBarLink from './NavbarLink';
 import Button from '../Button';
 import NavItem from './NavItem';
@@ -13,11 +13,16 @@ const Navbar = () => {
 	const [openNavbar, setOpenNavbar] = useState(false);
 	const navRef = useRef<HTMLElement>(null);
 	const containerRef = useRef<HTMLDivElement>(null);
+	const { pathname } = useLocation();
 
 	const { user, logoutUser } = useContext(AuthContext);
 
 	const toggleNav = () => {
 		setOpenNavbar(!openNavbar);
+	};
+
+	const handleNavItemClicked = () => {
+		setOpenNavbar(false);
 	};
 
 	useEffect(() => {
@@ -40,6 +45,10 @@ const Navbar = () => {
 			window.removeEventListener('scroll', scrollHandler);
 		};
 	}, []);
+
+	useEffect(() => {
+		handleNavItemClicked();
+	}, [pathname]);
 
 	function connected() {
 		if (user) {
@@ -98,19 +107,19 @@ const Navbar = () => {
 					)}
 				>
 					<ul className="flex flex-col w-full h-full mr-5 text-center lg:h-auto lg:flex-row">
-						<NavItem>
+						<NavItem onClick={handleNavItemClicked}>
 							<NavBarLink href="/#agences">Nos agences</NavBarLink>
 						</NavItem>
-						<NavItem>
+						<NavItem onClick={handleNavItemClicked}>
 							<NavBarLink href="/#services">Nos services</NavBarLink>
 						</NavItem>
-						<NavItem>
+						<NavItem onClick={handleNavItemClicked}>
 							<NavBarLink href="/#fonctionnment">Fonctionnement</NavBarLink>
 						</NavItem>
-						<NavItem>
+						<NavItem onClick={handleNavItemClicked}>
 							<NavBarLink href="/#valeurs">Nos valeurs</NavBarLink>
 						</NavItem>
-						<NavItem>
+						<NavItem onClick={handleNavItemClicked}>
 							<NavBarLink href="/#apropos">A propos</NavBarLink>
 						</NavItem>
 
