@@ -10,10 +10,8 @@ import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop';
 // Storybook cannot alias this, so you would use 'react-big-calendar/lib/addons/dragAndDrop/styles.scss'
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.scss';
 
-import { Link } from 'react-router-dom';
 import Button from 'components/common/Button';
 
-import InputBox from './InputBox';
 import AuthContext from '../context/AuthContext';
 
 const DragAndDropCalendar = withDragAndDrop(Calendar);
@@ -27,11 +25,10 @@ const formatName = (name, count) => `${name} ID ${count}`;
 //create your forceUpdate hook
 function useForceUpdate() {
 	const [value, setValue] = useState(0); // integer state
-	return () => setValue(value => value + 1); // update state to force render
-	// A function that increment 👆🏻 the previous state like here 
+	return () => setValue((value) => value + 1); // update state to force render
+	// A function that increment 👆🏻 the previous state like here
 	// is better than directly setting `setValue(value + 1)`
 }
-
 
 export default function DnDOutsideResource({ localizer, data, anonceid }) {
 	var annonce_id = anonceid;
@@ -212,20 +209,16 @@ export default function DnDOutsideResource({ localizer, data, anonceid }) {
 				<Card className="dndOutsideSourceExample">
 					<div className="inner">
 						<div className="login_form form_box">
-
 							<form onSubmit={handleSubmit}>
-								<Button type="submit" onClick={handleSubmit} className="mt-4 mb-6" >
+								<Button type="submit" onClick={handleSubmit} className="mt-4 mb-6">
 									Enregister les nouveaux creneaux
 								</Button>
-
 							</form>
 						</div>
 					</div>
 
 					<div>
-						<label>
-							Clickez sur le calendrier pour choisir les creneaux
-						</label>
+						<label>Clickez sur le calendrier pour choisir les creneaux</label>
 					</div>
 				</Card>
 			</DemoLink>
@@ -251,7 +244,7 @@ export default function DnDOutsideResource({ localizer, data, anonceid }) {
 					selectable
 				/>
 			</div>
-		</Fragment >
+		</Fragment>
 	);
 }
 DnDOutsideResource.propTypes = {
