@@ -11,8 +11,8 @@ import AuthContext from 'context/AuthContext';
 import FormError from 'components/common/Form/FormError';
 
 const Schema = z.object({
-	username: z.string().min(1, "Nom d'utilisateur requis"),
-	password: z.string().min(1, 'Mot de passe requis'),
+	username: z.string().min(1, "Email requis"),
+	password: z.string().min(1, "Mot de passe requis"),
 });
 const initialValues = {
 	username: '',
@@ -46,12 +46,12 @@ const Login: FC = () => {
 						<FormError error={status} />
 						<div className="w-full md:w-96">
 							<FormGroup className="mb-4">
-								<FormLabel>Nom d'utilisateur</FormLabel>
+								<FormLabel>Email</FormLabel>
 								<Input
 									error={touched.username ? errors.username : ''}
 									onChange={handleChange}
 									onBlur={handleBlur}
-									placeholder="Votre Nom d'utilisateur"
+									placeholder="Votre Email"
 									type="text"
 									name="username"
 									value={values.username}
@@ -84,7 +84,7 @@ const Login: FC = () => {
 					</Form>
 				)}
 			</Formik>
-		</AuthLayout>
+		</AuthLayout >
 	);
 };
 

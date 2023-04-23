@@ -1,5 +1,8 @@
 import { createContext, useState, useEffect, FC, PropsWithChildren } from 'react';
 import { useHistory } from 'react-router-dom';
+import { Exception } from 'sass';
+
+import MAIN_URL from 'utils/constants';
 
 export interface User {
 	first_name: string;
@@ -24,6 +27,7 @@ interface AuthContextProps {
 		last_name: string,
 		email: string,
 		role: string,
+		agence: string,
 		password: string,
 		confirm_password: string,
 		phone_number?: string,
@@ -37,14 +41,14 @@ interface AuthContextProps {
 }
 
 const AuthContext = createContext<AuthContextProps>({
-	loginUser: async () => {},
-	registerUser: async () => {},
-	logoutUser: async () => {},
-	publishAnnonce: async () => {},
-	list_annonces: async () => {},
-	publishSlots: async () => {},
-	setAuthTokens: () => {},
-	setUser: () => {},
+	loginUser: async () => { },
+	registerUser: async () => { },
+	logoutUser: async () => { },
+	publishAnnonce: async () => { },
+	list_annonces: async () => { },
+	publishSlots: async () => { },
+	setAuthTokens: () => { },
+	setUser: () => { },
 });
 
 export default AuthContext;
@@ -64,14 +68,13 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 			else return null;
 		} catch (e) {
 			localStorage.clear(); //what you need to do incase the jwt is not valid
-			console.log(e); //for your own debugging
 		}
 	});
 
 	const history = useHistory();
 
 	const loginUser = async (email: string, password: string) => {
-		const response = await fetch('http://127.0.0.1:8000/api/user/login/', {
+		const response = await fetch(MAIN_URL + '/user/login/', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -89,7 +92,7 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 			localStorage.setItem('authTokens', JSON.stringify(data));
 			history.push('/monespace');
 		} else {
-			alert('Something went wrong!');
+			throw new Error(data.error);
 		}
 	};
 
@@ -98,12 +101,12 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 		last_name: string,
 		email: string,
 		role: string,
+		agence_id: string,
 		password: string,
 		confirm_password: string,
 		phone_number?: string,
 	) => {
-		console.log('paswwords', password, confirm_password);
-		const response = await fetch('http://127.0.0.1:8000/api/user/signup/', {
+		const response = await fetch(MAIN_URL + '/user/signup/', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -113,6 +116,7 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 				last_name,
 				email,
 				role,
+				agence_id,
 				password,
 				confirm_password,
 				phone_number,
@@ -124,7 +128,7 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 		if (response.status === 200) {
 			history.push('/login');
 		} else {
-			alert("Erreur d'enregistrement");
+			throw new Error("Erreur d'enregistrement");
 		}
 	};
 
@@ -140,11 +144,9 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 		if (!auth) {
 			throw new Error('Vous devez être connecté pour publier une annonce');
 		}
-		console.log('auth_token:', auth, typeof auth);
 		const auth_json = JSON.parse(auth);
 		const json_auth_token = auth_json.token;
-		console.log('auth_token:', json_auth_token);
-		const response = await fetch('http://127.0.0.1:8000/api/annonces/', {
+		const response = await fetch(MAIN_URL + '/annonces/', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -161,7 +163,7 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 		if (response.status === 200) {
 			history.push('/');
 		} else {
-			alert('Erreur de publication');
+			throw new Error('Erreur de publication');
 		}
 	};
 
@@ -172,7 +174,7 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 		}
 		const auth_json = JSON.parse(auth);
 		const json_auth_token = auth_json.token;
-		const response = await fetch('http://127.0.0.1:8000/api/annonce/', {
+		const response = await fetch(MAIN_URL + '/annonce/', {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
@@ -184,8 +186,8 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 		if (response.status === 200) {
 			return data;
 		} else {
-			alert('Erreur de listing');
-			return null;
+			throw new Error('Erreur de listing');
+			//return null;
 		}
 	};
 
@@ -196,8 +198,7 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 		}
 		const auth_json = JSON.parse(auth);
 		const json_auth_token = auth_json.token;
-		console.log('auth_token:', json_auth_token);
-		const response = await fetch('http://127.0.0.1:8000/api/slots/' + annonce_id + '/', {
+		const response = await fetch(MAIN_URL + '/slots/' + annonce_id + '/', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -215,7 +216,7 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 		if (response.status === 200) {
 			history.push('/');
 		} else {
-			alert('Erreur de publication');
+			throw new Error('Erreur de reservation de créneaux');
 		}
 	};
 

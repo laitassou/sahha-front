@@ -10,20 +10,33 @@ import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop';
 // Storybook cannot alias this, so you would use 'react-big-calendar/lib/addons/dragAndDrop/styles.scss'
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.scss';
 
+import { Link } from 'react-router-dom';
+import Button from 'components/common/Button';
+
 import InputBox from './InputBox';
 import AuthContext from '../context/AuthContext';
 
 const DragAndDropCalendar = withDragAndDrop(Calendar);
 
-var events = [];
+//var events = [];
 
 var id_from_db = 0;
 
 const formatName = (name, count) => `${name} ID ${count}`;
 
-export default function DnDOutsideResource({ localizer, data }) {
-	var annonce_id = 0;
+//create your forceUpdate hook
+function useForceUpdate() {
+	const [value, setValue] = useState(0); // integer state
+	return () => setValue(value => value + 1); // update state to force render
+	// A function that increment 👆🏻 the previous state like here 
+	// is better than directly setting `setValue(value + 1)`
+}
 
+
+export default function DnDOutsideResource({ localizer, data, anonceid }) {
+	var annonce_id = anonceid;
+	var events = [];
+	const forceUpdate = useForceUpdate();
 	var i = 0;
 	while (i < data.length) {
 		const el = data[i];
@@ -34,6 +47,7 @@ export default function DnDOutsideResource({ localizer, data }) {
 			title: el.description,
 			start: new Date(el.start_time),
 			end: new Date(el.end_time),
+			from_base: true,
 			isDraggable: false,
 		};
 		if (
@@ -54,6 +68,11 @@ export default function DnDOutsideResource({ localizer, data }) {
 		isDraggable: false,
 	}));
 	const [myEvents, setMyEvents] = useState(adjEvents);
+
+	if (adjEvents.length > 0 && myEvents.length == 0) {
+		setMyEvents(adjEvents);
+	}
+	//myEvents = setMyEvents(adjEvents);
 
 	const { user, logoutUser } = useContext(AuthContext);
 
@@ -110,13 +129,13 @@ export default function DnDOutsideResource({ localizer, data }) {
 
 	/*
   const handleSelectSlot = useCallback(
-    ({ start, end }) => {
-      const title = window.prompt('Nom du creneau')
-      if (title) {
-        setEvents((prev) => [...prev, { start, end, title }])
-      }
-    },
-    [setEvents]
+	({ start, end }) => {
+	  const title = window.prompt('Nom du creneau')
+	  if (title) {
+		setEvents((prev) => [...prev, { start, end, title }])
+	  }
+	},
+	[setEvents]
   )
 */
 	const newEvent = useCallback(
@@ -126,7 +145,7 @@ export default function DnDOutsideResource({ localizer, data }) {
 				const newId = Math.max(...idList) + id_from_db + 1;
 				const title = window.prompt('Nom du creneau');
 				if (title) {
-					return [...prev, { ...event, title, id: newId, isDraggable: true }];
+					return [...prev, { ...event, title, id: newId, isDraggable: true, from_base: false }];
 				} else {
 					return [...prev];
 				}
@@ -178,7 +197,9 @@ export default function DnDOutsideResource({ localizer, data }) {
 		var i = 0;
 		while (i < myEvents.length) {
 			console.log('ev:' + myEvents[i].title + myEvents[i].start + myEvents[i].end);
-			publishSlots(annonce_id, myEvents[i].title, myEvents[i].start, myEvents[i].end);
+			if (myEvents[i].from_base === false) {
+				publishSlots(annonce_id, myEvents[i].title, myEvents[i].start, myEvents[i].end);
+			}
 			i++;
 		}
 	};
@@ -191,16 +212,19 @@ export default function DnDOutsideResource({ localizer, data }) {
 				<Card className="dndOutsideSourceExample">
 					<div className="inner">
 						<div className="login_form form_box">
+
 							<form onSubmit={handleSubmit}>
-								<InputBox class="submit_btn" type="submit" value="Engreistrer" />
+								<Button type="submit" onClick={handleSubmit} className="mt-4 mb-6" >
+									Enregister les nouveaux creneaux
+								</Button>
+
 							</form>
 						</div>
 					</div>
 
 					<div>
 						<label>
-							<input type="checkbox" checked={displayDragItemInCell} onChange={handleDisplayDragItemInCell} />
-							Display dragged item in cell while dragging over
+							Clickez sur le calendrier pour choisir les creneaux
 						</label>
 					</div>
 				</Card>
@@ -222,11 +246,12 @@ export default function DnDOutsideResource({ localizer, data }) {
 					onEventResize={resizeEvent}
 					onSelectSlot={newEvent}
 					data={data}
+					anonceid={anonceid}
 					resizable
 					selectable
 				/>
 			</div>
-		</Fragment>
+		</Fragment >
 	);
 }
 DnDOutsideResource.propTypes = {

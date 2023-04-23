@@ -14,10 +14,10 @@ const Footer = () => {
 							return false;
 						}}
 					>
-						<img alt="" src="assets/logo-004.png" />
+						<img alt="" src="assets/logo.svg" />
 					</NavLink>
 					<p className="max-w-xs mt-3">
-						Autour de la temathique de famille et dependance et aide à la personner Notre histoire est née d'un besoin
+						Autour de la thematique de famille et dependance et aide à la personner Notre histoire est née d'un besoin
 						familial
 					</p>
 				</div>

@@ -6,6 +6,8 @@ import SectionTitle from 'components/common/SectionTitle';
 import { Location } from 'assets/icons/index';
 import { BodySection } from 'components/common/BodySection';
 
+import MAIN_URL from 'utils/constants';
+
 interface AnnonceResponse {
 	id: number;
 	title: string;
@@ -20,7 +22,7 @@ const ListAnnonces: FC = () => {
 	let [annonces, setAnnonceData] = useState<AnnonceResponse[]>([]);
 
 	let getAnnonces = async () => {
-		let response = await fetch('http://127.0.0.1:8000/api/annonces/', {
+		let response = await fetch(MAIN_URL + '/annonces/', {
 			headers: {
 				'Content-Type': 'application/json',
 				Authorization: 'Token ' + json_auth_token,
