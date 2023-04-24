@@ -57,16 +57,9 @@ const SingleAnnonce = () => {
 					<SectionTitle title="Retour aux annonces" className="text-center" />
 				</Link>
 
-				<div className="container">
-					<div className="announce_box">
-						<h2>Details de votre annonce</h2>
-						{
-							<>
-								<Selectable localizer={localizer} data={slots} anonceid={id} />
-							</>
-						}
-					</div>
-					<div className="navbar"></div>
+				<div className="announce_box overflow">
+					<h2 className="text-2xl font-bold">Details de votre annonce</h2>
+					<Selectable localizer={localizer} data={slots} anonceid={id} />
 				</div>
 			</div>
 		</div>
