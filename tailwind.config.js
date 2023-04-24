@@ -30,7 +30,8 @@ module.exports = {
 				},
 			},
 			height: {
-				'mobile-nav': 'calc(100vh - 96px)',
+				'mobile-nav': 'calc(100vh - 6rem)',
+				calendar: '70.3125rem',
 			},
 		},
 	},

@@ -217,12 +217,10 @@ export default function DnDOutsideResource({ localizer, data, anonceid }) {
 						</div>
 					</div>
 
-					<div>
-						<label>Clickez sur le calendrier pour choisir les creneaux</label>
-					</div>
+					<p>Clickez sur le calendrier pour choisir les creneaux</p>
 				</Card>
 			</DemoLink>
-			<div className="height600">
+			<div className="p-8 font-sans bg-white shadow-2xl rounded-xl h-calendar">
 				<DragAndDropCalendar
 					defaultDate={defaultDate}
 					defaultView={Views.WEEK}

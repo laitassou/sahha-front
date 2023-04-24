@@ -2,6 +2,26 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-.pb-14 {
-    padding-bottom: 1rem;
+.rbc-header {
+	@apply flex items-center justify-center px-1 py-4;
+}
+
+.rbc-event {
+	@apply flex items-center justify-center text-sm bg-primary-500;
+}
+
+.rbc-event .rbc-event-label {
+	@apply text-sm;
+}
+
+.rbc-time-header {
+	@apply !m-0;
+}
+
+.rbc-event-content {
+	@apply inline-flex items-center;
+}
+
+.rbc-addons-dnd-resizable {
+	@apply flex;
 }
