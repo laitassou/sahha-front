@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import SectionTitle from 'components/common/SectionTitle';
 
 const ProtectedPage = () => {
 	const auth = localStorage.getItem('authTokens') as string;
@@ -7,8 +8,8 @@ const ProtectedPage = () => {
 	function Client() {
 		return (
 			<>
-				<Link to="/annonces"><h1>Publier votre annonces </h1></Link> <br />
-				<Link to="/list-annonces">Voir vos annonces</Link> <br />
+				<Link to="/annonces"><SectionTitle title="Publier votre annonces"> </SectionTitle></Link> <br />
+				<Link to="/list-annonces"><SectionTitle title="Voir vos annonces"></SectionTitle></Link> <br />
 			</>
 		);
 	}
