@@ -30,7 +30,7 @@ function useForceUpdate() {
 	// is better than directly setting `setValue(value + 1)`
 }
 
-export default function DnDOutsideResource({ localizer, data, anonceid, onEventDelete }) {
+export default function DnDOutsideResource({ localizer, data, anonceid }) {
 	var annonce_id = anonceid;
 	var events = [];
 	const forceUpdate = useForceUpdate();
@@ -73,7 +73,7 @@ export default function DnDOutsideResource({ localizer, data, anonceid, onEventD
 
 	const { user, logoutUser } = useContext(AuthContext);
 
-	const { publishSlots } = useContext(AuthContext);
+	const { publishSlots, deleteSlot } = useContext(AuthContext);
 
 	const [draggedEvent, setDraggedEvent] = useState();
 	const [displayDragItemInCell, setDisplayDragItemInCell] = useState(true);
@@ -202,7 +202,6 @@ export default function DnDOutsideResource({ localizer, data, anonceid, onEventD
 	};
 
 	const defaultDate = useMemo(() => new Date(), []);
-	console.log({ myEvents });
 	return (
 		<Fragment>
 			<DemoLink fileName="dndOutsideSource">
@@ -243,7 +242,7 @@ export default function DnDOutsideResource({ localizer, data, anonceid, onEventD
 					onSelectEvent={async (event) => {
 						const r = window.confirm('Would you like to remove this event?');
 						if (r === true) {
-							await onEventDelete(event.id);
+							await deleteSlot(event.id);
 							setMyEvents((prevState) => {
 								const events = [...prevState];
 								const idx = events.indexOf(event);
@@ -251,7 +250,6 @@ export default function DnDOutsideResource({ localizer, data, anonceid, onEventD
 								return events;
 							});
 						}
-						console.log(event);
 					}}
 				/>
 			</div>

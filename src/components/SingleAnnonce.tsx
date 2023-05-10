@@ -49,10 +49,6 @@ const SingleAnnonce = () => {
 		return null;
 	}
 
-	const onEventDelete = async (id: number) => {
-		console.log('Deleting event with id:', id);
-	};
-
 	return (
 		<div className="">
 			<div className="container">
@@ -63,7 +59,7 @@ const SingleAnnonce = () => {
 
 				<div className="announce_box overflow">
 					<h2 className="text-2xl font-bold">Details de votre annonce</h2>
-					<Selectable localizer={localizer} data={slots} anonceid={id} onEventDelete={onEventDelete} />
+					<Selectable localizer={localizer} data={slots} anonceid={id} />
 				</div>
 			</div>
 		</div>
