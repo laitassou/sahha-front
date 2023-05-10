@@ -34,6 +34,7 @@ interface AuthContextProps {
 	) => Promise<void>;
 	logoutUser: () => void;
 	publishAnnonce: (title: string, description: string) => Promise<void>;
+	deleteSlot: (event: number) => Promise<void>;
 	list_annonces: () => Promise<void>;
 	publishSlots: (annonce_id: number, description: string, start_time: number, end_time: number) => Promise<void>;
 	setAuthTokens: React.Dispatch<any>;
@@ -41,14 +42,15 @@ interface AuthContextProps {
 }
 
 const AuthContext = createContext<AuthContextProps>({
-	loginUser: async () => { },
-	registerUser: async () => { },
-	logoutUser: async () => { },
-	publishAnnonce: async () => { },
-	list_annonces: async () => { },
-	publishSlots: async () => { },
-	setAuthTokens: () => { },
-	setUser: () => { },
+	loginUser: async () => {},
+	registerUser: async () => {},
+	logoutUser: async () => {},
+	publishAnnonce: async () => {},
+	list_annonces: async () => {},
+	publishSlots: async () => {},
+	setAuthTokens: () => {},
+	setUser: () => {},
+	deleteSlot: async () => {},
 });
 
 export default AuthContext;
@@ -220,6 +222,16 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 		}
 	};
 
+	const deleteSlot = async (event: number) => {
+		const auth = localStorage.getItem('authTokens');
+		if (!auth) {
+			return;
+		}
+		const auth_json = JSON.parse(auth);
+		const json_auth_token = auth_json.token;
+		console.log('Delete event with id', event);
+	};
+
 	const contextData = {
 		user,
 		setUser,
@@ -231,6 +243,7 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 		publishAnnonce,
 		list_annonces,
 		publishSlots,
+		deleteSlot,
 	};
 
 	useEffect(() => {
