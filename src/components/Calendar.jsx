@@ -30,7 +30,7 @@ function useForceUpdate() {
 	// is better than directly setting `setValue(value + 1)`
 }
 
-export default function DnDOutsideResource({ localizer, data, anonceid }) {
+export default function DnDOutsideResource({ localizer, data, anonceid, onEventDelete }) {
 	var annonce_id = anonceid;
 	var events = [];
 	const forceUpdate = useForceUpdate();
@@ -202,7 +202,7 @@ export default function DnDOutsideResource({ localizer, data, anonceid }) {
 	};
 
 	const defaultDate = useMemo(() => new Date(), []);
-
+	console.log({ myEvents });
 	return (
 		<Fragment>
 			<DemoLink fileName="dndOutsideSource">
@@ -240,6 +240,19 @@ export default function DnDOutsideResource({ localizer, data, anonceid }) {
 					anonceid={anonceid}
 					resizable
 					selectable
+					onSelectEvent={async (event) => {
+						const r = window.confirm('Would you like to remove this event?');
+						if (r === true) {
+							await onEventDelete(event.id);
+							setMyEvents((prevState) => {
+								const events = [...prevState];
+								const idx = events.indexOf(event);
+								events.splice(idx, 1);
+								return events;
+							});
+						}
+						console.log(event);
+					}}
 				/>
 			</div>
 		</Fragment>
