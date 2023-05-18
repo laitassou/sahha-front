@@ -8,8 +8,9 @@ const ProtectedPage = () => {
 	function Client() {
 		return (
 			<>
-				<Link to="/annonces"><SectionTitle title="Publier votre annonces"> </SectionTitle></Link> <br />
-				<Link to="/list-annonces"><SectionTitle title="Voir vos annonces"></SectionTitle></Link> <br />
+				<br />
+				<Link to="/annonces"><SectionTitle title="Publier mon annonce"> </SectionTitle></Link> <br />
+				<Link to="/list-annonces"><SectionTitle title="Voir mes annonces"></SectionTitle></Link> <br />
 			</>
 		);
 	}
@@ -17,8 +18,10 @@ const ProtectedPage = () => {
 	function Worker() {
 		return (
 			<>
-				<Link to="/">Home</Link> <br />
-				<Link to="/protected">Intervenant</Link> <br />
+				<br />
+				<Link to="/specialite" > <SectionTitle title="Publier mes disponibiltés"></SectionTitle></Link > <br />
+				<Link to="/list-annonces"><SectionTitle title="Voir mes disponibiltés"></SectionTitle></Link> <br />
+
 			</>
 		);
 	}
@@ -26,8 +29,9 @@ const ProtectedPage = () => {
 	function Manager() {
 		return (
 			<>
-				<Link to="/">Home</Link> <br />
-				<Link to="/protected">Gerant</Link> <br />
+				<br />
+				<Link to="/list-members/clients" > <SectionTitle title="Lister les clients"></SectionTitle></Link > <br />
+				<Link to="/list-members/prestataires"> <SectionTitle title="Lister les prestataires"></SectionTitle></Link> <br />
 			</>
 		);
 	}

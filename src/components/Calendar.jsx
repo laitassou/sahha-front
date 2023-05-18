@@ -30,7 +30,7 @@ function useForceUpdate() {
 	// is better than directly setting `setValue(value + 1)`
 }
 
-export default function DnDOutsideResource({ localizer, data, anonceid }) {
+export default function DnDOutsideResource({ localizer, data, anonceid, setIntervenantId }) {
 	var annonce_id = anonceid;
 	var events = [];
 	const forceUpdate = useForceUpdate();
@@ -237,9 +237,10 @@ export default function DnDOutsideResource({ localizer, data, anonceid }) {
 					onSelectSlot={newEvent}
 					data={data}
 					anonceid={anonceid}
+					setIntervenantId={setIntervenantId}
 					resizable
 					selectable
-					onSelectEvent={async (event) => {
+					onDoubleClickEvent={async (event) => {
 						const r = window.confirm('Would you like to remove this event?');
 						if (r === true) {
 							await deleteSlot(event.id);
@@ -251,6 +252,7 @@ export default function DnDOutsideResource({ localizer, data, anonceid }) {
 							});
 						}
 					}}
+					onSelectEvent={async (event) => { setIntervenantId(event.id); }}
 				/>
 			</div>
 		</Fragment>

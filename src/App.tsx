@@ -10,6 +10,9 @@ import SingleAnnonce from './components/SingleAnnonce';
 import { Login } from 'views/Login';
 import { Register } from 'views/Register';
 import { Annonce } from 'views/Annonce';
+import { Availability } from 'views/Availability';
+
+import ListClients from './components/ListClients';
 
 function App() {
 	return (
@@ -27,8 +30,13 @@ function App() {
 						<Route component={Register} path="/signup" />
 						<Route component={ProtectedPage} path="/monespace" />
 						<Route component={Annonce} path="/annonces" />
+						<Route component={Availability} path="/specialite" />
 						<Route component={ListAnnonces} path="/list-annonces/" exact />
 						<Route component={SingleAnnonce} path="/annonce/:id/" exact />
+
+						<Route component={ListClients} path="/list-members/:type/" exact />
+						<Route component={ListClients} path="/list-members/:type/" exact />
+
 					</Switch>
 				</main>
 			</AuthProvider>
