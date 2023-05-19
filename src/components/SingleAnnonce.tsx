@@ -42,13 +42,21 @@ interface AnnonceResponse {
 	description: string;
 }
 
+
+interface event {
+	id: number;
+	title: string;
+	start: string;
+	end: string;
+}
+
 let data = []
 const SingleAnnonce = () => {
 	let [slots, setSlotsData] = useState<slot[]>([]);
 	let [annonce, setAnnonceData] = useState<AnnonceResponse[]>([]);
 	const auth = localStorage.getItem('authTokens') as string;
 
-	const [selected_id, setIntervenantId] = useState('');
+	const [event, setIntervenantId] = useState<event>();
 
 	const auth_json = JSON.parse(auth);
 	const json_auth_token = auth_json.token;
@@ -94,11 +102,17 @@ const SingleAnnonce = () => {
 
 
 	let intervenant = [];
-
-	if (selected_id) {
-		let slot = slots.filter((d) => d.id === parseInt(selected_id))[0];
-		if (slot && slot.intervenant) {
-			intervenant.push(slot.intervenant);
+	if (event) {
+		if (event.id) {
+			let slot = slots.filter((d) => d.id === event.id)[0];
+			if (slot && slot.intervenant) {
+				intervenant.push(slot.intervenant);
+			} else if (auth_json.role === 'Manager') {
+				person = "Choisir un intervenant";
+			}
+			else {
+				person = "Intervenant pas encore affecté";
+			}
 		}
 	}
 

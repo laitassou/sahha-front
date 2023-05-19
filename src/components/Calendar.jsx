@@ -18,6 +18,14 @@ const DragAndDropCalendar = withDragAndDrop(Calendar);
 
 //var events = [];
 
+const ColorEvents = {
+	PAST_DONE: '#77a832',
+	PAST_NOT_DONE: '#a83432',
+	FUTURE_AFFECTED: '#3298a8',
+	FUTURE_NOT_AFFECTED: '#4032a8',
+	NOT_IN_DB: '#3277a8',
+}
+
 var id_from_db = 0;
 
 const formatName = (name, count) => `${name} ID ${count}`;
@@ -30,6 +38,27 @@ function useForceUpdate() {
 	// is better than directly setting `setValue(value + 1)`
 }
 
+
+function assign_style(element) {
+	let color = ColorEvents.NOT_IN_DB;
+	let now = new Date();
+	let start = new Date(element.start_time);
+	if (now < start) {
+		if (element.time_slot_intervenant) {
+			color = ColorEvents.FUTURE_AFFECTED;
+		} else {
+			color = ColorEvents.FUTURE_AFFECTED;
+		}
+	} else {
+		if (element.time_slot_intervenant) {
+			color = ColorEvents.PAST_DONE;
+		} else {
+			color = ColorEvents.PAST_NOT_DONE;
+		}
+	}
+	return color;
+}
+
 export default function DnDOutsideResource({ localizer, data, anonceid, setIntervenantId }) {
 	var annonce_id = anonceid;
 	var events = [];
@@ -39,6 +68,7 @@ export default function DnDOutsideResource({ localizer, data, anonceid, setInter
 		const el = data[i];
 		annonce_id = data[i].annonce_id;
 		//alert(el);
+		let color = assign_style(el);
 		var ev = {
 			id: el.id,
 			title: el.description,
@@ -46,6 +76,7 @@ export default function DnDOutsideResource({ localizer, data, anonceid, setInter
 			end: new Date(el.end_time),
 			from_base: true,
 			isDraggable: false,
+			style: color,
 		};
 		if (
 			events.find((obj) => {
@@ -78,13 +109,25 @@ export default function DnDOutsideResource({ localizer, data, anonceid, setInter
 	const [draggedEvent, setDraggedEvent] = useState();
 	const [displayDragItemInCell, setDisplayDragItemInCell] = useState(true);
 	const [counters, setCounters] = useState({ item1: 0, item2: 0 });
-	const eventPropGetter = useCallback(
-		(event) => ({
-			...(event.isDraggable ? { className: 'isDraggable' } : { className: 'nonDraggable' }),
-		}),
-		[],
+
+	const eventStyleGetter = useCallback(
+		(event) => {
+			const style = {
+				backgroundColor: event.style,
+				borderWidth: '1px',
+			};
+			return {
+				style,
+			};
+		},
+		[]
 	);
-	//,
+	const eventPropGetter = useCallback(
+		(event) => {
+			return eventStyleGetter(event);
+		},
+		[eventStyleGetter]
+	);
 
 	const handleDragStart = useCallback((event) => setDraggedEvent(event), []);
 
@@ -125,7 +168,7 @@ export default function DnDOutsideResource({ localizer, data, anonceid, setInter
 	);
 
 	/*
-  const handleSelectSlot = useCallback(
+	const handleSelectSlot = useCallback(
 	({ start, end }) => {
 	  const title = window.prompt('Nom du creneau')
 	  if (title) {
@@ -133,8 +176,8 @@ export default function DnDOutsideResource({ localizer, data, anonceid, setInter
 	  }
 	},
 	[setEvents]
-  )
-*/
+	)
+	*/
 	const newEvent = useCallback(
 		(event) => {
 			setMyEvents((prev) => {
@@ -252,7 +295,7 @@ export default function DnDOutsideResource({ localizer, data, anonceid, setInter
 							});
 						}
 					}}
-					onSelectEvent={async (event) => { setIntervenantId(event.id); }}
+					onSelectEvent={async (event) => { setIntervenantId(event); }}
 				/>
 			</div>
 		</Fragment>
