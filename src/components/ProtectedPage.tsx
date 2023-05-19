@@ -10,7 +10,7 @@ const ProtectedPage = () => {
 			<>
 				<br />
 				<Link to="/annonces"><SectionTitle title="Publier mon annonce"> </SectionTitle></Link> <br />
-				<Link to="/list-annonces"><SectionTitle title="Voir mes annonces"></SectionTitle></Link> <br />
+				<Link to="/list-annonces/"><SectionTitle title="Voir mes annonces"></SectionTitle></Link> <br />
 			</>
 		);
 	}
@@ -20,7 +20,7 @@ const ProtectedPage = () => {
 			<>
 				<br />
 				<Link to="/specialite" > <SectionTitle title="Publier mes disponibiltés"></SectionTitle></Link > <br />
-				<Link to="/list-annonces"><SectionTitle title="Voir mes disponibiltés"></SectionTitle></Link> <br />
+				<Link to="/list-annonces/"><SectionTitle title="Voir mes disponibiltés"></SectionTitle></Link> <br />
 
 			</>
 		);

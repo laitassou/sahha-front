@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import SectionTitle from 'components/common/SectionTitle';
 import { Location } from 'assets/icons/index';
 import { BodySection } from 'components/common/BodySection';
+import { useParams } from 'react-router-dom';
 
 import MAIN_URL from 'utils/constants';
 
@@ -23,8 +24,15 @@ const ListAnnonces: FC = () => {
 	const { user } = useContext(AuthContext);
 	let [annonces, setAnnonceData] = useState<AnnonceResponse[]>([]);
 
+	//user id optional
+	const { id } = useParams<{ id: string }>();
+
+	let build_url = MAIN_URL + '/annonces/';
+	if (id) {
+		build_url = build_url + id + '/';
+	}
 	let getAnnonces = async () => {
-		let response = await fetch(MAIN_URL + '/annonces/', {
+		let response = await fetch(build_url, {
 			headers: {
 				'Content-Type': 'application/json',
 				Authorization: 'Token ' + json_auth_token,

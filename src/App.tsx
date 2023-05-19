@@ -31,7 +31,7 @@ function App() {
 						<Route component={ProtectedPage} path="/monespace" />
 						<Route component={Annonce} path="/annonces" />
 						<Route component={Availability} path="/specialite" />
-						<Route component={ListAnnonces} path="/list-annonces/" exact />
+						<Route component={ListAnnonces} path="/list-annonces/:id?" />
 						<Route component={SingleAnnonce} path="/annonce/:id/" exact />
 
 						<Route component={ListClients} path="/list-members/:type/" exact />

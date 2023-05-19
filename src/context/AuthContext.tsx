@@ -42,15 +42,15 @@ interface AuthContextProps {
 }
 
 const AuthContext = createContext<AuthContextProps>({
-	loginUser: async () => {},
-	registerUser: async () => {},
-	logoutUser: async () => {},
-	publishAnnonce: async () => {},
-	list_annonces: async () => {},
-	publishSlots: async () => {},
-	setAuthTokens: () => {},
-	setUser: () => {},
-	deleteSlot: async () => {},
+	loginUser: async () => { },
+	registerUser: async () => { },
+	logoutUser: async () => { },
+	publishAnnonce: async () => { },
+	list_annonces: async () => { },
+	publishSlots: async () => { },
+	setAuthTokens: () => { },
+	setUser: () => { },
+	deleteSlot: async () => { },
 });
 
 export default AuthContext;
@@ -163,7 +163,7 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 		//response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
 		if (response.status === 201) {
-			history.push('/list-annonces');
+			history.push('/list-annonces/');
 		} else {
 			throw new Error('Erreur de publication');
 		}

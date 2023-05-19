@@ -12,10 +12,12 @@ import MAIN_URL from 'utils/constants';
 
 interface ClientResponse {
 	id: number;
+	django_id: number;
 	first_name: string;
 	last_name: string;
 	phone_number: string;
 	role: string;
+	email_address: string;
 }
 const ListClients: FC = () => {
 	const auth = localStorage.getItem('authTokens') as string;
@@ -71,7 +73,7 @@ const ListClients: FC = () => {
 									{client.phone_number}
 								</h4>
 								<p className="text-gray-500 break-all md:w-2/4">
-									<Link to={`/annonce/${client.id}`}>{client.first_name}</Link>
+									<Link to={`/list-annonces/${client.django_id}/`}>{client.first_name} {client.last_name} {client.email_address}</Link>
 								</p>
 							</div>
 						</div>
