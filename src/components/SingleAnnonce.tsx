@@ -5,6 +5,8 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 import SectionTitle from 'components/common/SectionTitle';
 import { Location } from 'assets/icons/index';
 
+import ClientResponse from 'components/commonInterfaces';
+
 import MAIN_URL from 'utils/constants';
 
 import { useParams } from 'react-router-dom';
@@ -25,6 +27,7 @@ interface User {
 	first_name: string;
 	last_name: string;
 	phone_number: string;
+	django_id: number;
 }
 
 interface slot {
@@ -51,12 +54,18 @@ interface event {
 }
 
 let data = []
+
 const SingleAnnonce = () => {
 	let [slots, setSlotsData] = useState<slot[]>([]);
 	let [annonce, setAnnonceData] = useState<AnnonceResponse[]>([]);
 	const auth = localStorage.getItem('authTokens') as string;
 
-	const [event, setIntervenantId] = useState<event>();
+	let intervenant = [];
+	let candidates = [];
+
+	let [workers, setWorkersData] = useState<ClientResponse[]>([]);
+
+	const [ev, setIntervenantId] = useState<event>();
 
 	const auth_json = JSON.parse(auth);
 	const json_auth_token = auth_json.token;
@@ -80,8 +89,36 @@ const SingleAnnonce = () => {
 			setAnnonceData(ad);
 			setSlotsData(data);
 		};
+
+		let getWorkers = async () => {
+			let response = await fetch(MAIN_URL + '/users/Worker/', {
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: 'Token ' + json_auth_token,
+				},
+			});
+			let data = await response.json();
+			setWorkersData(data);
+
+		};
+
 		getSingleAnnonce();
+
+		getWorkers();
+
 	}, [id, json_auth_token]);
+
+
+	let SetIntervenant = async (slot_id: number, worker_id: number) => {
+		let response = await fetch(MAIN_URL + '/slot/' + slot_id + '/annonce/' + id + '/worker/' + worker_id + '/', {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: 'Token ' + json_auth_token,
+			},
+		});
+		let data = await response.json();
+	};
 
 	if (!user) {
 		return null;
@@ -100,15 +137,16 @@ const SingleAnnonce = () => {
 		person = 'Intervenant';
 	}
 
-
-	let intervenant = [];
-	if (event) {
-		if (event.id) {
-			let slot = slots.filter((d) => d.id === event.id)[0];
+	if (ev) {
+		if (ev.id) {
+			let slot = slots.filter((d) => d.id === ev.id)[0];
 			if (slot && slot.intervenant) {
 				intervenant.push(slot.intervenant);
 			} else if (auth_json.role === 'Manager') {
 				person = "Choisir un intervenant";
+				for (var el of workers) {
+					candidates.push(el);
+				}
 			}
 			else {
 				person = "Intervenant pas encore affecté";
@@ -140,19 +178,43 @@ const SingleAnnonce = () => {
 						</div>
 					))}
 
-					<h2 className="text-2xl font-bold">{person}</h2>
+					{intervenant.length ? <h2 className="text-2xl font-bold">{person}</h2> : ''}
 					{intervenant.map((iv, i) => (
-						<div key={i} className="w-full max-w-1xl pb-8">
-							<div className="flex flex-col items-center px-4 py-6 text-center bg-white border rounded shadow-2xl md:text-left md:flex-row border-gray-200/30 shadow-gray-200/80">
-								<h4 className="my-4 font-medium text-center break-all md:w-1/2 md:my-0 text-primary-500/50">
-									{iv.first_name}
-								</h4>
-								<h4 className="my-4 font-medium text-center break-all md:w-1/2 md:my-0 text-primary-500/50">
-									{iv.last_name}
-								</h4>
-								<h4 className="my-4 font-medium text-center break-all md:w-1/2 md:my-0 text-primary-500/50">
-									{iv.phone_number}
-								</h4>
+
+						<div>
+							<Link to={`/list-annonces/${iv.django_id}/`}>
+								<div key={i} className="w-full max-w-1xl pb-8" id="select-intervenant">
+									<div className="flex flex-col items-center px-4 py-6 text-center bg-white border rounded shadow-2xl md:text-left md:flex-row border-gray-200/30 shadow-gray-200/80">
+										<h4 className="my-4 font-medium text-center break-all md:w-1/2 md:my-0 text-primary-500/50">
+											{iv.first_name}
+										</h4>
+										<h4 className="my-4 font-medium text-center break-all md:w-1/2 md:my-0 text-primary-500/50">
+											{iv.last_name}
+										</h4>
+										<h4 className="my-4 font-medium text-center break-all md:w-1/2 md:my-0 text-primary-500/50">
+											{iv.phone_number}
+										</h4>
+									</div>
+								</div>
+							</Link>
+						</div>
+					))}
+
+					{candidates.length ? <h2 className="text-2xl font-bold">{person}</h2> : ''}
+					{ev && candidates.map((iv, i) => (
+						<div onClick={() => SetIntervenant(ev.id, iv.django_id)}>
+							<div key={i} className="w-full max-w-1xl pb-8" id="select-intervenant">
+								<div className="flex flex-col items-center px-4 py-6 text-center bg-white border rounded shadow-2xl md:text-left md:flex-row border-gray-200/30 shadow-gray-200/80">
+									<h4 className="my-4 font-medium text-center break-all md:w-1/2 md:my-0 text-primary-500/50">
+										{iv.first_name}
+									</h4>
+									<h4 className="my-4 font-medium text-center break-all md:w-1/2 md:my-0 text-primary-500/50">
+										{iv.last_name}
+									</h4>
+									<h4 className="my-4 font-medium text-center break-all md:w-1/2 md:my-0 text-primary-500/50">
+										{iv.phone_number} {iv.django_id}
+									</h4>
+								</div>
 							</div>
 						</div>
 					))}

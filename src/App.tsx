@@ -37,6 +37,8 @@ function App() {
 						<Route component={ListClients} path="/list-members/:type/" exact />
 						<Route component={ListClients} path="/list-members/:type/" exact />
 
+						<Route component={ListAnnonces} path="/slot/intervenant/:id/" />
+
 					</Switch>
 				</main>
 			</AuthProvider>

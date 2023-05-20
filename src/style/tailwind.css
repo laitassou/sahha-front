@@ -25,3 +25,8 @@
 .rbc-addons-dnd-resizable {
 	@apply flex;
 }
+
+
+#select-intervenant:hover * {
+	background: gold;
+}
