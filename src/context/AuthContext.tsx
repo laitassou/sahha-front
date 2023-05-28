@@ -4,6 +4,15 @@ import { Exception } from 'sass';
 
 import MAIN_URL from 'utils/constants';
 
+export interface Agence {
+	agence_id: number;
+	name: string;
+	city: string;
+	address: string;
+	manager: User;
+	phone_number: string;
+
+}
 export interface User {
 	first_name: string;
 	last_name: string;
@@ -11,6 +20,12 @@ export interface User {
 	email: string;
 	role: string;
 	phone_number?: string;
+	agence_id: number;
+	agence_name: string;
+	agence_city: string;
+	agence_address: string;
+	agence_manager: User;
+	agence_phone: string;
 }
 
 export interface AuthToken {
@@ -20,6 +35,7 @@ export interface AuthToken {
 
 interface AuthContextProps {
 	user?: User;
+	full_user?: User;
 	authTokens?: AuthToken;
 	loginUser: (email: string, password: string) => Promise<void>;
 	registerUser: (
@@ -63,6 +79,12 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 		else return null;
 	});
 
+	const [full_user, setFullUser] = useState(() => {
+		const storedToken = localStorage.getItem('authTokens');
+		if (storedToken) return JSON.parse(storedToken);
+		else return null;
+	});
+
 	const [authTokens, setAuthTokens] = useState(() => {
 		try {
 			const storedToken = localStorage.getItem('authTokens');
@@ -91,6 +113,7 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 			//setAuthTokens(data);
 			//user = jwt_decode(data.getItem("token"))
 			setUser(data);
+			setFullUser(data);
 			localStorage.setItem('authTokens', JSON.stringify(data));
 			history.push('/monespace');
 		} else {
@@ -235,6 +258,8 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 	const contextData = {
 		user,
 		setUser,
+		full_user,
+		setFullUser,
 		authTokens,
 		setAuthTokens,
 		registerUser,
@@ -249,6 +274,7 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 	useEffect(() => {
 		if (authTokens) {
 			setUser(authTokens.token);
+			setFullUser(authTokens);
 		}
 		setLoading(false);
 	}, [authTokens, loading]);

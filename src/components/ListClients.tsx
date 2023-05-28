@@ -19,14 +19,18 @@ interface ClientResponse {
 	role: string;
 	email_address: string;
 }
-const ListClients: FC = () => {
+interface params {
+	type: string;
+};
+
+const ListClients: FC<params> = ({ type }) => {
 	const auth = localStorage.getItem('authTokens') as string;
 	const auth_json = JSON.parse(auth);
 	const json_auth_token = auth_json.token;
 	const { user } = useContext(AuthContext);
 	let [clients, setClientData] = useState<ClientResponse[]>([]);
 
-	const { type } = useParams<{ type: string }>();
+	//const { type } = useParams<{ type: string }>();
 
 
 	let endpoint = '';
@@ -60,7 +64,7 @@ const ListClients: FC = () => {
 
 
 	return (
-		<BodySection id="agences" className="px-0 lg:px-40">
+		<BodySection id="agences" className="px-0">
 			<div className="container">
 				<SectionTitle title={title} className="text-center" />
 				<div className="flex flex-wrap justify-center">

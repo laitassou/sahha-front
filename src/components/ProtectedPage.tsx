@@ -1,5 +1,10 @@
 import { Link } from 'react-router-dom';
 import SectionTitle from 'components/common/SectionTitle';
+import ListAnnonces from 'components/ListAnnonces';
+import ListClients from './ListClients';
+import { BodySection } from 'components/common/BodySection';
+
+import Profil from 'components/Profil';
 
 const ProtectedPage = () => {
 	const auth = localStorage.getItem('authTokens') as string;
@@ -8,9 +13,20 @@ const ProtectedPage = () => {
 	function Client() {
 		return (
 			<>
-				<br />
-				<Link to="/annonces"><SectionTitle title="Publier mon annonce"> </SectionTitle></Link> <br />
-				<Link to="/list-annonces/"><SectionTitle title="Voir mes annonces"></SectionTitle></Link> <br />
+				<div className="announce_box overflow">
+					<br />
+					<Link to="/annonces"><SectionTitle title="Publier une nouvelle annonce"> </SectionTitle></Link>
+					<div className="announce_box overflow">
+						<div className="flex flex-row">
+							<div className="basis-3/5">
+								<ListAnnonces />
+							</div>
+							<div className="basis-2/5">
+								<Profil />
+							</div>
+						</div>
+					</div>
+				</div >
 			</>
 		);
 	}
@@ -18,10 +34,20 @@ const ProtectedPage = () => {
 	function Worker() {
 		return (
 			<>
-				<br />
-				<Link to="/specialite" > <SectionTitle title="Publier mes disponibiltés"></SectionTitle></Link > <br />
-				<Link to="/list-annonces/"><SectionTitle title="Voir mes disponibiltés"></SectionTitle></Link> <br />
-
+				<div className="announce_box overflow">
+					<br />
+					<Link to="/annonces"><SectionTitle title="Publier une nouvelle annonce"> </SectionTitle></Link>
+					<div className="announce_box overflow">
+						<div className="flex flex-row">
+							<div className="basis-3/5">
+								<ListAnnonces />
+							</div>
+							<div className="basis-2/5">
+								<Profil />
+							</div>
+						</div>
+					</div>
+				</div >
 			</>
 		);
 	}
@@ -29,9 +55,22 @@ const ProtectedPage = () => {
 	function Manager() {
 		return (
 			<>
-				<br />
-				<Link to="/list-members/clients" > <SectionTitle title="Lister les clients"></SectionTitle></Link > <br />
-				<Link to="/list-members/prestataires"> <SectionTitle title="Lister les prestataires"></SectionTitle></Link> <br />
+				<div className="announce_box overflow">
+					<br />
+					<Link to="/annonces"><SectionTitle title="Publier une nouvelle annonce"> </SectionTitle></Link>
+					<div className="announce_box overflow">
+						<div className="flex flex-row">
+							<div className="basis-3/5">
+								<ListClients type={"clients"} />
+								<ListClients type={"prestataires"} />
+							</div>
+
+							<div className="basis-2/5">
+								<Profil />
+							</div>
+						</div>
+					</div>
+				</div >
 			</>
 		);
 	}
