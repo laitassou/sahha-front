@@ -16,11 +16,13 @@ import FormError from 'components/common/Form/FormError';
 const initialValues = {
 	title: '',
 	description: '',
+	address: '',
 };
 
 const schema = z.object({
 	title: z.string().min(10, "Titre doit être d'au moins 10 caractères"),
 	description: z.string().min(10, "Description doit être d'au moins 10 caractères"),
+	address: z.string().optional(),
 });
 
 const Availability = () => {
@@ -40,9 +42,9 @@ const Availability = () => {
 							}
 						}}
 						initialValues={initialValues}
-						onSubmit={async ({ title, description }, actions) => {
+						onSubmit={async ({ title, description, address }, actions) => {
 							try {
-								await publishAnnonce(title, description);
+								await publishAnnonce(title, description, address);
 								actions.resetForm();
 							} catch (err) {
 								actions.setStatus((err as Error).message);
@@ -73,6 +75,17 @@ const Availability = () => {
 										value={values.description}
 										placeholder="Description du service"
 										rows={5}
+									/>
+								</FormGroup>
+								<FormGroup >
+									<FormLabel>Addresse</FormLabel>
+									<Input
+										error={touched.address ? errors.address : ''}
+										name="address"
+										onChange={handleChange}
+										onBlur={handleBlur}
+										value={values.address}
+										placeholder="Titre du service"
 									/>
 								</FormGroup>
 								<Button className="mt-6" type="submit" isLoading={isSubmitting}>

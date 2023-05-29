@@ -49,7 +49,7 @@ interface AuthContextProps {
 		phone_number?: string,
 	) => Promise<void>;
 	logoutUser: () => void;
-	publishAnnonce: (title: string, description: string) => Promise<void>;
+	publishAnnonce: (title: string, description: string, address: string) => Promise<void>;
 	deleteSlot: (event: number) => Promise<void>;
 	list_annonces: () => Promise<void>;
 	publishSlots: (annonce_id: number, description: string, start_time: number, end_time: number) => Promise<void>;
@@ -164,7 +164,7 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 		history.push('/');
 	};
 
-	const publishAnnonce = async (title: string, description: string) => {
+	const publishAnnonce = async (title: string, description: string, address: string) => {
 		const auth = localStorage.getItem('authTokens');
 		if (!auth) {
 			throw new Error('Vous devez être connecté pour publier une annonce');
@@ -180,6 +180,7 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 			body: JSON.stringify({
 				title,
 				description,
+				address
 			}),
 		});
 		//response.header("Access-Control-Allow-Origin", "*");

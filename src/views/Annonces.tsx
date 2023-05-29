@@ -5,12 +5,13 @@ function Annonces() {
 	const [title, SetTitle] = useState('');
 	const [description, setDescription] = useState('');
 	const { user } = useContext(AuthContext);
+	const [address, setAddress] = useState('');
 
 	const { publishAnnonce } = useContext(AuthContext);
 
 	const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		publishAnnonce(title, description);
+		publishAnnonce(title, description, address);
 	};
 
 	const handleTitle = (event: ChangeEvent<HTMLTextAreaElement>) => {
