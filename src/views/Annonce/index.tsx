@@ -6,8 +6,6 @@ import { Textarea } from 'components/common/Form/Textarea';
 import SectionTitle from 'components/common/SectionTitle';
 import { Form, Formik } from 'formik';
 import { ZodError, z } from 'zod';
-import { ReactComponent as DoctorLab } from 'assets/doctor-lab.svg';
-import { ReactComponent as Vase } from 'assets/vase.svg';
 import { useContext } from 'react';
 import AuthContext from 'context/AuthContext';
 import { Input } from 'components/common/Form/Input';
@@ -29,9 +27,7 @@ const Annonce = () => {
 	const { publishAnnonce } = useContext(AuthContext);
 	return (
 		<BodySection className="relative">
-			<Vase className="absolute bottom-0 left-0" />
 			<div className="container">
-				<SectionTitle title="Créer une annonce">Publiez votre annonce</SectionTitle>
 				<div className="flex flex-wrap justify-between">
 					<Formik
 						validate={(values) => {
@@ -46,6 +42,7 @@ const Annonce = () => {
 							try {
 								await publishAnnonce(title, description, address);
 								actions.resetForm();
+								//actions.setStatus("annonce publiée");
 							} catch (err) {
 								actions.setStatus((err as Error).message);
 							}
@@ -95,7 +92,6 @@ const Annonce = () => {
 						)}
 					</Formik>
 
-					<DoctorLab className="hidden -translate-y-10 xl:block" />
 				</div>
 			</div>
 		</BodySection>

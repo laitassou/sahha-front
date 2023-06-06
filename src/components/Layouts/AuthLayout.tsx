@@ -4,6 +4,8 @@ import { ReactComponent as Portrait } from 'assets/portrait.svg';
 import { ReactComponent as RedVase } from 'assets/red-vase.svg';
 import { ReactComponent as Lamp } from 'assets/lamp.svg';
 import { ReactComponent as Doctor } from 'assets/doctor.svg';
+import { ReactComponent as ClientSVG } from 'assets/client.svg';
+
 import { FC, PropsWithChildren } from 'react';
 interface Props {
 	title: string;
