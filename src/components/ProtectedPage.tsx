@@ -53,7 +53,7 @@ const ProtectedPage = () => {
 										<div className="font-raleway font-bold text-3xl leading-42 tracking-wider text-black flex-none order-0">Publier une nouvelle annonce
 										</div>
 										<button type="button" className="icon-button">
-											<svg width="36px" height="36px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M8 12H16" stroke="#2B67F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M12 16V8" stroke="#2B67F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" stroke="#2B67F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+											<svg width="36px" height="36px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M8 12H16" stroke="#2B67F6" strokeWidth="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M12 16V8" stroke="#2B67F6" strokeWidth="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" stroke="#2B67F6" strokeWidth="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
 										</button>
 									</div>
 
@@ -74,11 +74,11 @@ const ProtectedPage = () => {
 										</div>
 										<button type="button" className="icon-button">
 											<svg width="36px" height="36px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+												<g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
 												<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
 												<g id="SVGRepo_iconCarrier">
-													<path d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" stroke="#2B67F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-													<path d="M8.46997 10.6399L12 14.1599L15.53 10.6399" stroke="#2B67F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+													<path d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" stroke="#2B67F6" strokeWidth="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+													<path d="M8.46997 10.6399L12 14.1599L15.53 10.6399" stroke="#2B67F6" strokeWidth="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
 												</g>
 											</svg>
 										</button>
@@ -127,7 +127,7 @@ const ProtectedPage = () => {
 										<div className="font-raleway font-bold text-3xl leading-42 tracking-wider text-black flex-none order-0">Proposer un service
 										</div>
 										<button type="button" className="icon-button">
-											<svg width="36px" height="36px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M8 12H16" stroke="#2B67F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M12 16V8" stroke="#2B67F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" stroke="#2B67F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+											<svg width="36px" height="36px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M8 12H16" stroke="#2B67F6" strokeWidth="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M12 16V8" stroke="#2B67F6" strokeWidth="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" stroke="#2B67F6" strokeWidth="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
 										</button>
 									</div>
 
@@ -148,11 +148,11 @@ const ProtectedPage = () => {
 										</div>
 										<button type="button" className="icon-button">
 											<svg width="36px" height="36px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+												<g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
 												<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
 												<g id="SVGRepo_iconCarrier">
-													<path d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" stroke="#2B67F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-													<path d="M8.46997 10.6399L12 14.1599L15.53 10.6399" stroke="#2B67F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+													<path d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" stroke="#2B67F6" strokeWidth="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+													<path d="M8.46997 10.6399L12 14.1599L15.53 10.6399" stroke="#2B67F6" strokeWidth="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
 												</g>
 											</svg>
 										</button>
@@ -201,11 +201,11 @@ const ProtectedPage = () => {
 										</div>
 										<button type="button" className="icon-button">
 											<svg width="36px" height="36px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+												<g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
 												<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
 												<g id="SVGRepo_iconCarrier">
-													<path d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" stroke="#2B67F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-													<path d="M8.46997 10.6399L12 14.1599L15.53 10.6399" stroke="#2B67F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+													<path d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" stroke="#2B67F6" strokeWidth="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+													<path d="M8.46997 10.6399L12 14.1599L15.53 10.6399" stroke="#2B67F6" strokeWidth="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
 												</g>
 											</svg>
 										</button>
@@ -227,11 +227,11 @@ const ProtectedPage = () => {
 										</div>
 										<button type="button" className="icon-button">
 											<svg width="36px" height="36px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+												<g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
 												<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
 												<g id="SVGRepo_iconCarrier">
-													<path d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" stroke="#2B67F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-													<path d="M8.46997 10.6399L12 14.1599L15.53 10.6399" stroke="#2B67F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+													<path d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" stroke="#2B67F6" strokeWidth="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+													<path d="M8.46997 10.6399L12 14.1599L15.53 10.6399" stroke="#2B67F6" strokeWidth="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
 												</g>
 											</svg>
 										</button>
