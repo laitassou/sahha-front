@@ -55,6 +55,7 @@ interface AuthContextProps {
 	publishSlots: (annonce_id: number, description: string, start_time: number, end_time: number) => Promise<void>;
 	setAuthTokens: React.Dispatch<any>;
 	setUser: React.Dispatch<any>;
+	post_feedback: (slot_id: number, worker_id: number, feedback: string, score: number) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextProps>({
@@ -67,6 +68,7 @@ const AuthContext = createContext<AuthContextProps>({
 	setAuthTokens: () => { },
 	setUser: () => { },
 	deleteSlot: async () => { },
+	post_feedback: async () => { },
 });
 
 export default AuthContext;
@@ -257,6 +259,34 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 		console.log('Delete event with id', event);
 	};
 
+
+
+	const post_feedback = async (slot_id: number, worker_id: number, feedback: string, score: number) => {
+		const auth = localStorage.getItem('authTokens');
+		if (!auth) {
+			throw new Error('Vous devez être connecté pour donner un feedback');
+		}
+		const auth_json = JSON.parse(auth);
+		const json_auth_token = auth_json.token;
+
+		const response = await fetch(MAIN_URL + '/feedback/' + slot_id + '/' + worker_id, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: 'Token ' + json_auth_token,
+			},
+			body: JSON.stringify({
+				feedback,
+				score,
+			}),
+		});
+		if (response.status === 201) {
+		} else {
+			throw new Error('Erreur de publication');
+		}
+	};
+
+
 	const contextData = {
 		user,
 		setUser,
@@ -271,6 +301,7 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 		list_annonces,
 		publishSlots,
 		deleteSlot,
+		post_feedback,
 	};
 
 	useEffect(() => {
