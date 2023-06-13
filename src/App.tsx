@@ -13,6 +13,8 @@ import { Annonce } from 'views/Annonce';
 import { Availability } from 'views/Availability';
 
 import ListClients from './components/ListClients';
+import ListSlots from './components/ListSlots';
+
 
 function App() {
 	return (
@@ -39,6 +41,7 @@ function App() {
 
 						<Route component={ListAnnonces} path="/slot/intervenant/:id/" />
 
+						<Route component={ListSlots} path="/worker/slots/:id/" exact />
 					</Switch>
 				</main>
 			</AuthProvider>

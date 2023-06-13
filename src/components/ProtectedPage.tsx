@@ -1,9 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import AuthContext from '../context/AuthContext';
+
 import { Link } from 'react-router-dom';
 import SectionTitle from 'components/common/SectionTitle';
 import ListAnnonces_v2 from 'components/ListAnnonces_v2';
 import ListClients from './ListClients';
 import { BodySection } from 'components/common/BodySection';
+
+import ListSlots from "./ListSlots";
 
 import Profil from 'components/Profil';
 import { Annonce } from 'views/Annonce';
@@ -13,12 +17,16 @@ const ProtectedPage = () => {
 	const auth = localStorage.getItem('authTokens') as string;
 	const auth_json = JSON.parse(auth);
 
+	const { full_user } = useContext(AuthContext);
+
 	const [visible, setVisible] = useState(false);
 	const [visible2, setVisible2] = useState(false);
+	const [visible3, setVisible3] = useState(false);
 
 	useEffect(() => {
 		setVisible(true);
 		setVisible2(true);
+		setVisible3(true);
 	}, []);
 
 	const closeHandler = () => {
@@ -37,6 +45,13 @@ const ProtectedPage = () => {
 		content2 && content2.classList.toggle('hidden');
 	}
 
+	const closeListSlots = () => {
+		const accordion3Item = document.querySelector('.slots-item');
+		const content3 = accordion3Item && accordion3Item.querySelector('.slots-content');
+
+		accordion3Item && accordion3Item.classList.toggle('active');
+		content3 && content3.classList.toggle('hidden');
+	}
 
 	function Client() {
 		return (
@@ -170,6 +185,44 @@ const ProtectedPage = () => {
 								</div>
 							</div>
 
+
+
+
+							<div className="slots w-full">
+								<div className="slots-item bg-white rounded-md">
+									<div className="accordion-title flex flex-row justify-between items-center py-5 px-5 w-full bg-white rounded-md" onClick={closeListSlots}>
+										<div className="font-raleway font-bold text-3xl leading-42 tracking-wider text-black flex-none order-0">Mes prochains RDV
+										</div>
+										<button type="button" className="icon-button">
+											<svg width="36px" height="36px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+												<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+												<g id="SVGRepo_iconCarrier">
+													<path d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" stroke="#2B67F6" strokeWidth="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+													<path d="M8.46997 10.6399L12 14.1599L15.53 10.6399" stroke="#2B67F6" strokeWidth="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+												</g>
+											</svg>
+										</button>
+									</div>
+
+									<div className="slots-content hidden mb-5" style={{
+										visibility: visible3 ? "visible" : "hidden",
+										opacity: visible3 ? "1" : "0"
+									}}>
+										{(full_user && full_user.id &&
+											<Link to={`/worker/slots/${full_user.id}`}>
+
+												<div className="font-raleway font-bold text-3xl leading- tracking-wider text-black flex-none order-0">
+													Mes rendez-vous à venir
+												</div>
+											</Link>
+										)}
+
+
+									</div>
+
+								</div>
+							</div>
 
 						</div>
 

@@ -20,6 +20,7 @@ export interface User {
 	email: string;
 	role: string;
 	phone_number?: string;
+	id: number;
 	agence_id: number;
 	agence_name: string;
 	agence_city: string;
